@@ -30,6 +30,19 @@ gem "tailwindcss-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# Annotates Rails/ActiveRecord Models, routes, fixtures, and others based on the database schema.
+gem 'annotate', '~> 3.1', '>= 3.1.1'
+
+# RuboCop is a Ruby code style checking and code formatting tool. It aims to enforce the community-driven Ruby Style Guide.
+gem 'rubocop', '~> 1.56', '>= 1.56.2'
+
+# Great Ruby debugging companion: pretty print Ruby objects to visualize their structure. Supports custom object formatting via plugins
+gem 'awesome_print', '~> 1.9', '>= 1.9.2'
+
+#Faker, a port of Data::Faker from Perl, is used to easily generate fake data: names, addresses, phone numbers, etc.
+gem 'faker', '~> 3.1'
+
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -54,6 +67,8 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'pry', '~> 0.14.2'
+  gem 'byebug', '~> 11.1', '>= 11.1.3'
 end
 
 group :development do
