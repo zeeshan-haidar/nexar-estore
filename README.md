@@ -22,3 +22,9 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+note: wheneve u add new migration do annotate through annotate command
+
+ie  cd /app/
+     annotate
