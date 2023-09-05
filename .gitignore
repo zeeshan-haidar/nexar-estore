@@ -26,3 +26,6 @@
 # Public assets
 /public/assets/*
 /coverage
+
+#node modules
+/node_modules/*
