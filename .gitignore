@@ -29,3 +29,6 @@
 
 #node modules
 /node_modules/*
+
+#.idea
+/.idea/*

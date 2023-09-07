@@ -33,9 +33,6 @@ gem "jbuilder"
 # Annotates Rails/ActiveRecord Models, routes, fixtures, and others based on the database schema.
 gem 'annotate', '~> 3.1', '>= 3.1.1'
 
-# RuboCop is a Ruby code style checking and code formatting tool. It aims to enforce the community-driven Ruby Style Guide.
-gem 'rubocop', '~> 1.56', '>= 1.56.2'
-
 # Great Ruby debugging companion: pretty print Ruby objects to visualize their structure. Supports custom object formatting via plugins
 gem 'awesome_print', '~> 1.9', '>= 1.9.2'
 
@@ -74,6 +71,11 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
+  # Want to add rucocop to RSpec code?
+  gem 'rubocop-rspec', require: false
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
