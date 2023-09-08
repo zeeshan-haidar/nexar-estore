@@ -74,6 +74,8 @@ group :development do
 
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
+  # Want to add rubocop to graphql api code?
+  gem 'rubocop-graphql', require: false
   # Want to add rucocop to RSpec code?
   gem 'rubocop-rspec', require: false
 
