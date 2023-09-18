@@ -1,11 +1,12 @@
 # README
 
-This is the documentation of this project
+This is the documentation of this project, 
+It's a e-commerece site 
 
 soon will work on it
 
 This README would normally document whatever steps are necessary to get the
-application up and running. we will try to improve it
+application up and running. we will try to improve it 
 
 Things you may want to cover:
 
