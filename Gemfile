@@ -36,9 +36,6 @@ gem 'annotate', '~> 3.1', '>= 3.1.1'
 # Great Ruby debugging companion: pretty print Ruby objects to visualize their structure. Supports custom object formatting via plugins
 gem 'awesome_print', '~> 1.9', '>= 1.9.2'
 
-#Faker, a port of Data::Faker from Perl, is used to easily generate fake data: names, addresses, phone numbers, etc.
-gem 'faker', '~> 3.1'
-
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -78,6 +75,10 @@ group :development do
   gem 'rubocop-graphql', require: false
   # Want to add rucocop to RSpec code?
   gem 'rubocop-rspec', require: false
+
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+  gem "faker"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
