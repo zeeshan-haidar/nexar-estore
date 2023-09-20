@@ -8,6 +8,8 @@ soon will work on it
 This README would normally document whatever steps are necessary to get the
 application up and running. we will try to improve it 
 
+* we are also covering test cases with rspec
+
 Things you may want to cover:
 
 * Ruby version   3.1.2
