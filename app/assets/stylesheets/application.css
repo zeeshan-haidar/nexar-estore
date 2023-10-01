@@ -13,3 +13,39 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+    background-color: #f1f3f6;
+}
+
+.card{
+    align-content: center;
+}
+
+.card-img-top
+{
+ margin-top: 25px;
+    width: 255px;
+    margin-left: 25px;
+    /*height: 270px;*/
+    /*width: 270px;*/
+}
+
+.rating-color{
+    color:#fbc634 !important;
+}
+
+.ratings{
+    margin-left:90px;
+    margin-top: 20px;
+}
+
+.add-to-cart{
+    width: 170px;
+    margin-top: 10px;
+}
+
+.ms-6{
+    margin-left: 70px
+}
+
