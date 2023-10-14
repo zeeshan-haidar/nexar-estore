@@ -4,4 +4,8 @@ class PagesController < ApplicationController
 
   def product
   end
+
+  def laptop
+
+  end
 end
