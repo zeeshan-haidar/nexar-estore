@@ -6,6 +6,5 @@ class PagesController < ApplicationController
   end
 
   def laptop
-
   end
 end
