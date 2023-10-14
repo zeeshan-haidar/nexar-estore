@@ -7,4 +7,10 @@ class PagesController < ApplicationController
 
   def laptop
   end
+
+  def registration
+  end
+
+  def signin
+  end
 end
