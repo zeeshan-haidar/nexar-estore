@@ -37,6 +37,10 @@ gem 'annotate', '~> 3.1', '>= 3.1.1'
 gem 'awesome_print', '~> 1.9', '>= 1.9.2'
 
 
+#Devise gem for authentication
+gem 'devise', '~> 4.9', '>= 4.9.3'
+
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -76,8 +80,6 @@ group :development do
   # Want to add rucocop to RSpec code?
   gem 'rubocop-rspec', require: false
 
-  gem "rspec-rails"
-  gem "factory_bot_rails"
   gem "faker"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
@@ -92,4 +94,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+
+  gem "rspec-rails"
+  gem "factory_bot_rails"
 end
