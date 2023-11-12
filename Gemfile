@@ -40,6 +40,9 @@ gem 'awesome_print', '~> 1.9', '>= 1.9.2'
 #Devise gem for authentication
 gem 'devise', '~> 4.9', '>= 4.9.3'
 
+#cancancan gem for authorization
+gem 'cancancan', '~> 3.5'
+
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
