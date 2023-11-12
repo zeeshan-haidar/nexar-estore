@@ -60,7 +60,7 @@ Rails.application.configure do
   config.assets.quiet = true
 
   # Letter Opener Settings
-  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :letter_opener_web
   config.action_mailer.perform_deliveries = true
 
   # Raises error for missing translations.
