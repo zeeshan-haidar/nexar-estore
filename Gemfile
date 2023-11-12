@@ -43,6 +43,11 @@ gem 'devise', '~> 4.9', '>= 4.9.3'
 #cancancan gem for authorization
 gem 'cancancan', '~> 3.5'
 
+# to run async code
+gem 'sidekiq', '~> 7.0', '>= 7.0.2'
+
+
+gem 'redis', '~> 5.0'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
