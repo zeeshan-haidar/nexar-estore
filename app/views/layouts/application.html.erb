@@ -120,8 +120,20 @@
   </header>
 
   <!-- main-content --->
-  <p class="notice" ><%= notice %></p>
-  <p class="alert" ><%= alert %></p>
+  <!-- flash notice and alerst -->
+  <% flash.each do |type, msg| %>
+     <div class="container">
+       <% if type == "notice" %>
+          <div class="alert alert-info">
+            <span><%= msg %></span>
+          </div>
+        <% else %>
+          <div class="alert alert-danger">
+            <span><%= msg %></span>
+          </div>
+        <% end%>
+     </div>
+  <% end %>
   <%= yield %>
   <!-- main content-->
 
