@@ -70,7 +70,6 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'pry', '~> 0.14.2'
   gem 'byebug', '~> 11.1', '>= 11.1.3'
-  gem 'letter_opener_web', '~> 2.0'
 end
 
 group :development do
@@ -86,6 +85,7 @@ group :development do
 
   gem "faker"
 
+  gem 'letter_opener_web', '~> 2.0'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
