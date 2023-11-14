@@ -4,7 +4,8 @@ class UserMailer < ApplicationMailer
     @user = User.find(user_id)
 
     puts mail(   :to      => @user.email,
-            :subject => "Welcome"
+            :subject => "Registration Confirmation - NEXAR",
+                 :from => "no_reply@nexar.com"
     ) do |format|
       format.text
       format.html
