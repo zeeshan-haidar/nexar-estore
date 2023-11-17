@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: "users/registrations"}
+
+  devise_scope :user do
+    #root :to => "devise/sessions#new"
+    #get "sign_in", :to => "devise/sessions#new"
+    get "sign_out", :to => "devise/sessions#destroy"
+    #get "sign_up", :to => "devise/registrations#new"
+  end
+
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
   root 'pages#home'
