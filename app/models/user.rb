@@ -3,7 +3,7 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
-#  admin_role             :boolean          default(FALSE)
+#  admin_role             :boolean          default(FALSE), not null
 #  city                   :string
 #  confirmation_sent_at   :datetime
 #  confirmation_token     :string
@@ -20,7 +20,7 @@
 #  reset_password_token   :string
 #  street                 :string
 #  unconfirmed_email      :string
-#  user_role              :boolean          default(TRUE)
+#  user_role              :boolean          default(TRUE), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #

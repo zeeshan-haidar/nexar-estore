@@ -8,3 +8,10 @@ AllCops:
   NewCops: enable
 RSpec/FilePath:
   Enabled: false
+Style/Documentation:
+  Enabled: false
+# Disable the I18nLocaleTexts cop for the entire app
+Rails/I18nLocaleTexts:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false

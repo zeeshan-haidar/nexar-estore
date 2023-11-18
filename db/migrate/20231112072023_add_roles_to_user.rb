@@ -1,6 +1,8 @@
 class AddRolesToUser < ActiveRecord::Migration[7.0]
   def change
-    add_column :users, :admin_role, :boolean, default: false
-    add_column :users, :user_role, :boolean, default: true
+    change_table :users, bulk: true do |t|
+      t.boolean :admin_role, default: false, null: false
+      t.boolean :user_role, default: true, null: false
+    end
   end
 end

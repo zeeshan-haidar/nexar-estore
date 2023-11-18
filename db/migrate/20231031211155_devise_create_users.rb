@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class DeviseCreateUsers < ActiveRecord::Migration[7.0]
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/AbcSize
   def change
-    create_enum :user_gender, ["male", "female"]
+    create_enum :user_gender, %w[male female]
 
     create_table :users do |t|
       ## Database authenticatable
@@ -42,7 +44,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-
       t.timestamps null: false
     end
 
@@ -51,4 +52,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
     add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
   end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/AbcSize
 end
