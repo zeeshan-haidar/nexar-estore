@@ -4,10 +4,6 @@
 #   You can modify it to look like this.
 
 FactoryBot.define do
-  factory :user do
-    first_name { "Bobe" }
-  end
-
   factory(:user) do
     email { Faker::Internet.email }
     password { Faker::Internet.password }
