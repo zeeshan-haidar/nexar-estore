@@ -35,9 +35,14 @@
           <!-- Center elements -->
           <div class="order-lg-last col-lg-5 col-sm-8 col-8">
             <div class="d-flex float-end">
-              <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center" target="_blank"> <i class="fas fa-user-alt m-1 me-md-2"></i><p class="d-none d-md-block mb-0">Sign in</p> </a>
-              <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center" target="_blank"> <i class="fas fa-star m-1 me-md-2"></i><p class="d-none d-md-block mb-0">Wishlist</p> </a>
-              <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="border rounded py-1 px-3 nav-link d-flex align-items-center" target="_blank"> <i class="fas fa-shopping-cart m-1 me-md-2"></i><p class="d-none d-md-block mb-0">My cart</p> </a>
+              <% if user_signed_in? %>
+                <a href=<%= sign_out_path %> class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center" target="_self"> <i class="fas fa-sign-out-alt m-1 me-md-2"></i><p class="d-none d-md-block mb-0">Sign out</p> </a>
+              <% else %>
+                <a href=<%= new_user_session_url %> class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center" target="_self"> <i class="fas fa-sign-in-alt m-1 me-md-2" aria-hidden="true"></i><p class="d-none d-md-block mb-0">Sign in</p> </a>
+                <a href=<%= new_user_registration_url %> class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center" target="_self"> <i class="fas fa-user-circle m-1 me-md-2"></i><p class="d-none d-md-block mb-0">Sign up</p> </a>
+              <% end %>
+            <!--  <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center" target="_blank"> <i class="fas fa-star m-1 me-md-2"></i><p class="d-none d-md-block mb-0">Wishlist</p> </a>-->
+              <a href=<%= sign_out_path %> class="border rounded py-1 px-3 nav-link d-flex align-items-center" target="_self"> <i class="fa fa-shopping-cart m-1 me-md-2"></i><p class="d-none d-md-block mb-0">My cart</p> </a>
             </div>
           </div>
           <!-- Center elements -->

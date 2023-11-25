@@ -169,7 +169,14 @@ Devise.setup do |config|
   # config.remember_for = 2.weeks
 
   # Invalidates all the remember me tokens when the user signs out.
-  config.expire_all_remember_me_on_sign_out = true
+  #config.expire_all_remember_me_on_sign_out = true
+
+  # The time the user will be remembered without asking for credentials again.
+  config.remember_for = 2.weeks
+
+  # The time you want to timeout the user session without activity. After this
+  # time the user will be asked for credentials again.
+  config.timeout_in = 10.minutes
 
   # If true, extends the user's remember period when remembered via cookie.
   # config.extend_remember_period = false
@@ -306,6 +313,8 @@ Devise.setup do |config|
   # Note: These might become the new default in future versions of Devise.
   config.responder.error_status = :unprocessable_entity
   config.responder.redirect_status = :see_other
+
+
 
   # ==> Configuration for :registerable
 
