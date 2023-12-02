@@ -42,4 +42,12 @@ class User < ApplicationRecord
   validates :street, presence: true
   validates :city, presence: true
   validates :country, presence: true
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+  def full_address
+    "#{street}, #{city}, #{country}"
+  end
 end

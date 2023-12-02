@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     # get "sign_up", :to => "devise/registrations#new"
   end
 
+  resources :users, :only => [:show]
+
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
   root 'pages#home'
@@ -15,6 +17,8 @@ Rails.application.routes.draw do
   get 'pages/product' => 'pages#product'
 
   get 'pages/laptop' => 'pages#laptop'
+
+  get 'pages/profile' => 'pages#profile'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

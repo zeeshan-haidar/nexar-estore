@@ -33,9 +33,6 @@ gem "jbuilder"
 # Annotates Rails/ActiveRecord Models, routes, fixtures, and others based on the database schema.
 gem 'annotate', '~> 3.1', '>= 3.1.1'
 
-# Great Ruby debugging companion: pretty print Ruby objects to visualize their structure. Supports custom object formatting via plugins
-gem 'awesome_print', '~> 1.9', '>= 1.9.2'
-
 
 #Devise gem for authentication
 gem 'devise', '~> 4.9', '>= 4.9.3'
@@ -74,6 +71,8 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'pry', '~> 0.14.2'
   gem 'byebug', '~> 11.1', '>= 11.1.3'
+  # Great Ruby debugging companion: pretty print Ruby objects to visualize their structure. Supports custom object formatting via plugins
+  gem 'awesome_print', '~> 1.9', '>= 1.9.2'
 end
 
 group :development do
