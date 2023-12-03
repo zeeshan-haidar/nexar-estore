@@ -127,4 +127,9 @@ This is the README file for an E-commerce website. This document provides an ove
 * Send Order receipt email
 * Send Order notification to Admin
 
+# Notes:
+* after adding a migration and running it, ro annotation for models and spec by
+  bundle exec annotate command
+* install redis server version 6.2.0
+
 Feel free to use this README as a reference for your project or to share it with your team members to understand the functional requirements and use cases of the E-commerce website.

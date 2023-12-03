@@ -17,246 +17,268 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
   <%= favicon_link_tag 'svg-icon.ico' %>
 </head>
-<!--Main Navigation-->
-<header>
-  <!-- Jumbotron -->
-  <div class="p-3 text-center bg-white border-bottom">
-    <div class="container">
-      <div class="row gy-3">
-        <!-- Left elements -->
-        <div class="col-lg-2 col-sm-4 col-4">
-          <a href="/" target="_self" class="float-start">
-            <%= image_tag("icon_small.png") %>
-          </a>
-        </div>
-        <!-- Left elements -->
-
-        <!-- Center elements -->
-        <div class="order-lg-last col-lg-5 col-sm-8 col-8">
-          <div class="d-flex float-end">
-            <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center" target="_blank"> <i class="fas fa-user-alt m-1 me-md-2"></i><p class="d-none d-md-block mb-0">Sign in</p> </a>
-            <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center" target="_blank"> <i class="fas fa-star m-1 me-md-2"></i><p class="d-none d-md-block mb-0">Wishlist</p> </a>
-            <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="border rounded py-1 px-3 nav-link d-flex align-items-center" target="_blank"> <i class="fas fa-shopping-cart m-1 me-md-2"></i><p class="d-none d-md-block mb-0">My cart</p> </a>
+<body>
+  <!--Main Navigation-->
+  <header>
+    <!-- Jumbotron -->
+    <div class="p-3 text-center bg-white border-bottom">
+      <div class="container">
+        <div class="row gy-3">
+          <!-- Left elements -->
+          <div class="col-lg-2 col-sm-4 col-4">
+            <a href="/" target="_self" class="float-start">
+              <%= image_tag("icon_small.png") %>
+            </a>
           </div>
-        </div>
-        <!-- Center elements -->
+          <!-- Left elements -->
 
-        <!-- Right elements -->
-        <div class="col-lg-5 col-md-12 col-12">
-          <div class="input-group float-center">
-            <div class="form-outline">
-              <input type="search" id="form1" class="form-control" />
-              <label class="form-label" for="form1">Search</label>
+          <!-- Center elements -->
+          <div class="order-lg-last col-lg-5 col-sm-8 col-8">
+            <div class="d-flex float-end">
+              <% if user_signed_in? %>
+                <a href=<%= sign_out_path %> class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center" target="_self"> <i class="fas fa-sign-out-alt m-1 me-md-2"></i><p class="d-none d-md-block mb-0">Sign out</p> </a>
+              <% else %>
+                <a href=<%= new_user_session_url %> class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center" target="_self"> <i class="fas fa-sign-in-alt m-1 me-md-2" aria-hidden="true"></i><p class="d-none d-md-block mb-0">Sign in</p> </a>
+                <a href=<%= new_user_registration_url %> class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center" target="_self"> <i class="fas fa-user-circle m-1 me-md-2"></i><p class="d-none d-md-block mb-0">Sign up</p> </a>
+              <% end %>
+            <!--  <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center" target="_blank"> <i class="fas fa-star m-1 me-md-2"></i><p class="d-none d-md-block mb-0">Wishlist</p> </a>-->
+              <a href=<%= sign_out_path %> class="border rounded py-1 px-3 nav-link d-flex align-items-center" target="_self"> <i class="fa fa-shopping-cart m-1 me-md-2"></i><p class="d-none d-md-block mb-0">My cart</p> </a>
             </div>
-            <button type="button" class="btn btn-primary shadow-0">
-              <i class="fas fa-search"></i>
-            </button>
           </div>
+          <!-- Center elements -->
+
+          <!-- Right elements -->
+          <div class="col-lg-5 col-md-12 col-12">
+            <div class="input-group float-center">
+              <div class="form-outline">
+                <input type="search" id="form1" class="form-control" />
+                <label class="form-label" for="form1">Search</label>
+              </div>
+              <button type="button" class="btn btn-primary shadow-0">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <!-- Right elements -->
         </div>
-        <!-- Right elements -->
       </div>
     </div>
-  </div>
-  <!-- Jumbotron -->
+    <!-- Jumbotron -->
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <!-- Container wrapper -->
-    <div class="container justify-content-center justify-content-md-between">
-      <!-- Toggle button -->
-      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarLeftAlignExample" aria-controls="navbarLeftAlignExample" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
-      </button>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <!-- Container wrapper -->
+      <div class="container justify-content-center justify-content-md-between">
+        <!-- Toggle button -->
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarLeftAlignExample" aria-controls="navbarLeftAlignExample" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
 
-      <!-- Collapsible wrapper -->
-      <div class="collapse navbar-collapse" id="navbarLeftAlignExample">
-        <!-- Left links -->
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Categories</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Hot offers</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Gift boxes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Menu item</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Menu name</a>
-          </li>
-          <!-- Navbar dropdown -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-              Others
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarLeftAlignExample">
+          <!-- Left links -->
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <!-- Navbar dropdown -->
+            <% if user_signed_in? && current_user.user_role? %>
+              <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                My Account
+              </a>
+              <!-- Dropdown menu -->
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="dropdown-item" href="#">Dashboard</a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="<%= user_path(current_user.id) %>">View Profile</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="<%= edit_user_registration_path %>">Edit Profile</a>
+                </li>
+              </ul>
+            </li>
+            <% end %>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Categories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Hot offers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Gift boxes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Menu item</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Menu name</a>
+            </li>
+          </ul>
+          <!-- Left links -->
+        </div>
+      </div>
+      <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+  </header>
+
+  <!-- main-content --->
+  <!-- flash notice and alerst -->
+  <% flash.each do |type, msg| %>
+     <div class="container">
+       <% if type == "notice" %>
+          <div class="alert alert-info">
+            <span><%= msg %></span>
+          </div>
+        <% else %>
+          <div class="alert alert-danger">
+            <span><%= msg %></span>
+          </div>
+        <% end%>
+     </div>
+  <% end %>
+  <%= yield %>
+  <!-- main content-->
+
+  <!-- Footer -->
+  <footer class="text-center text-lg-start text-muted bg-primary mt-3">
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start pt-4 pb-4">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-12 col-lg-3 col-sm-12 mb-2">
+            <!-- Content -->
+            <a href="https://mdbootstrap.com/" target="_blank" class="text-white h2">
+              MDB
             </a>
-            <!-- Dropdown menu -->
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <p class="mt-1 text-white">
+              © 2023 Copyright: MDBootstrap.com
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-6 col-sm-4 col-lg-2">
+            <!-- Links -->
+            <h6 class="text-uppercase text-white fw-bold mb-2">
+              Store
+            </h6>
+            <ul class="list-unstyled mb-4">
+              <li><a class="text-white-50" href="#">About us</a></li>
+              <li><a class="text-white-50" href="#">Find store</a></li>
+              <li><a class="text-white-50" href="#">Categories</a></li>
+              <li><a class="text-white-50" href="#">Blogs</a></li>
+            </ul>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-6 col-sm-4 col-lg-2">
+            <!-- Links -->
+            <h6 class="text-uppercase text-white fw-bold mb-2">
+              Information
+            </h6>
+            <ul class="list-unstyled mb-4">
+              <li><a class="text-white-50" href="#">Help center</a></li>
+              <li><a class="text-white-50" href="#">Money refund</a></li>
+              <li><a class="text-white-50" href="#">Shipping info</a></li>
+              <li><a class="text-white-50" href="#">Refunds</a></li>
+            </ul>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-6 col-sm-4 col-lg-2">
+            <!-- Links -->
+            <h6 class="text-uppercase text-white fw-bold mb-2">
+              Support
+            </h6>
+            <ul class="list-unstyled mb-4">
+              <li><a class="text-white-50" href="#">Help center</a></li>
+              <li><a class="text-white-50" href="#">Documents</a></li>
+              <li><a class="text-white-50" href="#">Account restore</a></li>
+              <li><a class="text-white-50" href="#">My orders</a></li>
+            </ul>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-12 col-sm-12 col-lg-3">
+            <!-- Links -->
+            <h6 class="text-uppercase text-white fw-bold mb-2">Newsletter</h6>
+            <p class="text-white">Stay in touch with latest updates about our products and offers</p>
+            <div class="input-group mb-3">
+              <input type="email" class="form-control border" placeholder="Email" aria-label="Email" aria-describedby="button-addon2" />
+              <button class="btn btn-light border shadow-0" type="button" id="button-addon2" data-mdb-ripple-color="dark">
+                Join
+              </button>
+            </div>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+
+    <div class="">
+      <div class="container">
+        <div class="d-flex justify-content-between py-4 border-top">
+          <!--- payment --->
+          <div>
+            <i class="fab fa-lg fa-cc-visa text-white"></i>
+            <i class="fab fa-lg fa-cc-amex text-white"></i>
+            <i class="fab fa-lg fa-cc-mastercard text-white"></i>
+            <i class="fab fa-lg fa-cc-paypal text-white"></i>
+          </div>
+          <!--- payment --->
+
+          <!--- language selector --->
+          <div class="dropdown dropup">
+            <a class="dropdown-toggle text-white" href="#" id="Dropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false"> <i class="flag-united-kingdom flag m-0 me-1"></i>English </a>
+
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="Dropdown">
               <li>
-                <a class="dropdown-item" href="#">Action</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#"><i class="flag-united-kingdom flag"></i>English <i class="fa fa-check text-success ms-2"></i></a>
               </li>
               <li><hr class="dropdown-divider" /></li>
               <li>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="#"><i class="flag-poland flag"></i>Polski</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#"><i class="flag-china flag"></i>中文</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#"><i class="flag-japan flag"></i>日本語</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#"><i class="flag-germany flag"></i>Deutsch</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#"><i class="flag-france flag"></i>Français</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#"><i class="flag-spain flag"></i>Español</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#"><i class="flag-russia flag"></i>Русский</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#"><i class="flag-portugal flag"></i>Português</a>
               </li>
             </ul>
-          </li>
-        </ul>
-        <!-- Left links -->
-      </div>
-    </div>
-    <!-- Container wrapper -->
-  </nav>
-  <!-- Navbar -->
-</header>
-
-<!-- main-content --->
-<%= yield %>
-<!-- main content-->
-
-<!-- Footer -->
-<footer class="text-center text-lg-start text-muted bg-primary mt-3">
-  <!-- Section: Links  -->
-  <section class="">
-    <div class="container text-center text-md-start pt-4 pb-4">
-      <!-- Grid row -->
-      <div class="row mt-3">
-        <!-- Grid column -->
-        <div class="col-12 col-lg-3 col-sm-12 mb-2">
-          <!-- Content -->
-          <a href="https://mdbootstrap.com/" target="_blank" class="text-white h2">
-            MDB
-          </a>
-          <p class="mt-1 text-white">
-            © 2023 Copyright: MDBootstrap.com
-          </p>
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-6 col-sm-4 col-lg-2">
-          <!-- Links -->
-          <h6 class="text-uppercase text-white fw-bold mb-2">
-            Store
-          </h6>
-          <ul class="list-unstyled mb-4">
-            <li><a class="text-white-50" href="#">About us</a></li>
-            <li><a class="text-white-50" href="#">Find store</a></li>
-            <li><a class="text-white-50" href="#">Categories</a></li>
-            <li><a class="text-white-50" href="#">Blogs</a></li>
-          </ul>
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-6 col-sm-4 col-lg-2">
-          <!-- Links -->
-          <h6 class="text-uppercase text-white fw-bold mb-2">
-            Information
-          </h6>
-          <ul class="list-unstyled mb-4">
-            <li><a class="text-white-50" href="#">Help center</a></li>
-            <li><a class="text-white-50" href="#">Money refund</a></li>
-            <li><a class="text-white-50" href="#">Shipping info</a></li>
-            <li><a class="text-white-50" href="#">Refunds</a></li>
-          </ul>
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-6 col-sm-4 col-lg-2">
-          <!-- Links -->
-          <h6 class="text-uppercase text-white fw-bold mb-2">
-            Support
-          </h6>
-          <ul class="list-unstyled mb-4">
-            <li><a class="text-white-50" href="#">Help center</a></li>
-            <li><a class="text-white-50" href="#">Documents</a></li>
-            <li><a class="text-white-50" href="#">Account restore</a></li>
-            <li><a class="text-white-50" href="#">My orders</a></li>
-          </ul>
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-12 col-sm-12 col-lg-3">
-          <!-- Links -->
-          <h6 class="text-uppercase text-white fw-bold mb-2">Newsletter</h6>
-          <p class="text-white">Stay in touch with latest updates about our products and offers</p>
-          <div class="input-group mb-3">
-            <input type="email" class="form-control border" placeholder="Email" aria-label="Email" aria-describedby="button-addon2" />
-            <button class="btn btn-light border shadow-0" type="button" id="button-addon2" data-mdb-ripple-color="dark">
-              Join
-            </button>
           </div>
+          <!--- language selector --->
         </div>
-        <!-- Grid column -->
-      </div>
-      <!-- Grid row -->
-    </div>
-  </section>
-  <!-- Section: Links  -->
-
-  <div class="">
-    <div class="container">
-      <div class="d-flex justify-content-between py-4 border-top">
-        <!--- payment --->
-        <div>
-          <i class="fab fa-lg fa-cc-visa text-white"></i>
-          <i class="fab fa-lg fa-cc-amex text-white"></i>
-          <i class="fab fa-lg fa-cc-mastercard text-white"></i>
-          <i class="fab fa-lg fa-cc-paypal text-white"></i>
-        </div>
-        <!--- payment --->
-
-        <!--- language selector --->
-        <div class="dropdown dropup">
-          <a class="dropdown-toggle text-white" href="#" id="Dropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false"> <i class="flag-united-kingdom flag m-0 me-1"></i>English </a>
-
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="Dropdown">
-            <li>
-              <a class="dropdown-item" href="#"><i class="flag-united-kingdom flag"></i>English <i class="fa fa-check text-success ms-2"></i></a>
-            </li>
-            <li><hr class="dropdown-divider" /></li>
-            <li>
-              <a class="dropdown-item" href="#"><i class="flag-poland flag"></i>Polski</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#"><i class="flag-china flag"></i>中文</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#"><i class="flag-japan flag"></i>日本語</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#"><i class="flag-germany flag"></i>Deutsch</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#"><i class="flag-france flag"></i>Français</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#"><i class="flag-spain flag"></i>Español</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#"><i class="flag-russia flag"></i>Русский</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#"><i class="flag-portugal flag"></i>Português</a>
-            </li>
-          </ul>
-        </div>
-        <!--- language selector --->
       </div>
     </div>
-  </div>
-</footer>
-<!-- Footer -->
+  </footer>
+  <!-- Footer -->
 </body>
 </html>

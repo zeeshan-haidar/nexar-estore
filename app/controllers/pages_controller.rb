@@ -8,6 +8,9 @@ class PagesController < ApplicationController
   def laptop
   end
 
+  def profile
+  end
+
   def registration
   end
 

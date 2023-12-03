@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Confirmation - NEXAR</title>
+</head>
+
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f4f4f4; margin: 0; padding: 0;">
+
+<div style="max-width: 600px; margin: 20px auto; background-color: #fff; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+
+  <h2 style="color: #333;">Registration Confirmation - NEXAR</h2>
+
+  <p>Dear <%= @user.first_name %>,</p>
+
+  <p>Thank you for choosing NEXAR! We are thrilled to welcome you to our community. Your registration has been successfully processed, and your account is now active.</p>
+
+  <p><strong>Details of your registration:</strong></p>
+  <ul>
+    <li><strong>Username/Email:</strong> <%= @user.email %></li>
+    <li><strong>Account ID:</strong> <%= @user.id %></li>
+  </ul>
+
+  <p>You can now log in to your account using the following link: <a href="[Login Link]" style="color: #007BFF; text-decoration: none;">Login</a></p>
+
+  <p>Please take a moment to review your account information and update any details if necessary. If you have any questions or encounter any issues, feel free to reach out to our support team at <a href="mailto:support@nexar.com" style="color: #007BFF; text-decoration: none;">support@nexar.com</a> or call us at +134564965.</p>
+
+  <p>We appreciate your trust in NEXAR. We are committed to providing you with an exceptional experience, and we look forward to serving you.</p>
+
+  <p>Thank you once again for joining us!</p>
+
+  <p>Best regards,<br>
+    NEXAR<br>
+    <a href="mailto:support@nexar.com" style="color: #007BFF; text-decoration: none;">support@nexar.com</a><br>
+    <a href="[Website URL]" style="color: #007BFF; text-decoration: none;">www.nexar.com</a><br>
+  </p>
+
+</div>
+
+</body>
+
+</html>

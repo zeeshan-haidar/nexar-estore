@@ -59,3 +59,8 @@
   height: 1px;
   background: #eee;
 }
+
+.devise-errors{
+  color:red;
+  list-style-type: circle;
+}

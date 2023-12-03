@@ -33,9 +33,15 @@ gem "jbuilder"
 # Annotates Rails/ActiveRecord Models, routes, fixtures, and others based on the database schema.
 gem 'annotate', '~> 3.1', '>= 3.1.1'
 
-# Great Ruby debugging companion: pretty print Ruby objects to visualize their structure. Supports custom object formatting via plugins
-gem 'awesome_print', '~> 1.9', '>= 1.9.2'
 
+#Devise gem for authentication
+gem 'devise', '~> 4.9', '>= 4.9.3'
+
+#cancancan gem for authorization
+gem 'cancancan', '~> 3.5'
+
+# to run async code
+gem 'sidekiq', '~> 7.0', '>= 7.0.2'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -58,11 +64,15 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+gem 'letter_opener_web', '~> 2.0'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'pry', '~> 0.14.2'
   gem 'byebug', '~> 11.1', '>= 11.1.3'
+  # Great Ruby debugging companion: pretty print Ruby objects to visualize their structure. Supports custom object formatting via plugins
+  gem 'awesome_print', '~> 1.9', '>= 1.9.2'
 end
 
 group :development do
@@ -76,8 +86,6 @@ group :development do
   # Want to add rucocop to RSpec code?
   gem 'rubocop-rspec', require: false
 
-  gem "rspec-rails"
-  gem "factory_bot_rails"
   gem "faker"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
@@ -92,4 +100,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+
+  gem "rspec-rails"
+  gem "factory_bot_rails"
 end
