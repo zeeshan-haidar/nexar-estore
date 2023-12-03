@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     # get "sign_up", :to => "devise/registrations#new"
   end
 
-  resources :users, :only => [:show]
+  resources :users, only: [:show]
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
