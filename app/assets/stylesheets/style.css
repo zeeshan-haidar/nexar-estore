@@ -64,3 +64,17 @@
   color:red;
   list-style-type: circle;
 }
+
+/* Disable notch for form controls */
+.form-notch {
+  display: none !important;
+}
+
+.form-notch + label {
+  margin-top: 0 !important;
+}
+
+.form-control.is-invalid,
+.was-validated .form-control:invalid  {
+  margin-bottom: 0 !important;
+}
