@@ -13,12 +13,16 @@
 #  encrypted_password     :string           default(""), not null
 #  first_name             :string           default(""), not null
 #  gender                 :enum             default("male"), not null
+#  image                  :text
 #  last_name              :string           default(""), not null
 #  mobile                 :string           default(""), not null
+#  name                   :string
+#  provider               :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
 #  street                 :string
+#  uid                    :string
 #  unconfirmed_email      :string
 #  user_role              :boolean          default(TRUE), not null
 #  created_at             :datetime         not null
