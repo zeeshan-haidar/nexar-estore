@@ -43,6 +43,13 @@ gem 'cancancan', '~> 3.5'
 # to run async code
 gem 'sidekiq', '~> 7.0', '>= 7.0.2'
 
+gem "omniauth-rails_csrf_protection", "~> 1.0"
+
+# login with facebook
+gem 'omniauth-facebook', '7.0'
+
+
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -73,6 +80,9 @@ group :development, :test do
   gem 'byebug', '~> 11.1', '>= 11.1.3'
   # Great Ruby debugging companion: pretty print Ruby objects to visualize their structure. Supports custom object formatting via plugins
   gem 'awesome_print', '~> 1.9', '>= 1.9.2'
+
+  #to save environment variables
+  gem 'dotenv-rails'
 end
 
 group :development do
