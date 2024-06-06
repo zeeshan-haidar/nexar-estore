@@ -71,7 +71,7 @@ class User < ApplicationRecord
       user.email ||= data["email"] if data == session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
     end
   end
-  
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
       user.email = auth.info.email

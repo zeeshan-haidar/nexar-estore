@@ -2,7 +2,6 @@
 
 class DeviseCreateUsers < ActiveRecord::Migration[7.0]
   # rubocop:disable Metrics/MethodLength
-  # rubocop:disable Metrics/AbcSize
   def change
     create_enum :user_gender, %w[male female]
 
@@ -53,5 +52,4 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
     # add_index :users, :unlock_token,         unique: true
   end
   # rubocop:enable Metrics/MethodLength
-  # rubocop:enable Metrics/AbcSize
 end
