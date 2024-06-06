@@ -67,9 +67,10 @@ class User < ApplicationRecord
   end
 
   def self.new_with_session(params, session)
-    super.tap do |user|
-      user.email ||= data["email"] if data == session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
-    end
+    # super.tap do |user|
+    #   user.email ||= data["email"] if data == session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+    # end
+    # here data is not defined
   end
 
   def self.from_omniauth(auth)
