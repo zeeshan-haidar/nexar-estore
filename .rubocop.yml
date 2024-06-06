@@ -15,3 +15,5 @@ Rails/I18nLocaleTexts:
   Enabled: false
 Metrics/BlockLength:
   Enabled: false
+Metrics/AbcSize:
+    Enabled: false
