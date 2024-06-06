@@ -311,7 +311,6 @@ Devise.setup do |config|
   config.omniauth :google_oauth2, ENV.fetch('GOOGLE_OAUTH_CLIENT_ID'), ENV.fetch('GOOGLE_OAUTH_CLIENT_SECRET'),
                   callback_url: ENV.fetch('GOOGLE_CALLBACK_URL')
 
-
   # ==> Hotwire/Turbo configuration
   # When using Devise with Hotwire/Turbo, the http status for error responses
   # and some redirects must match the following. The default in Devise for existing
