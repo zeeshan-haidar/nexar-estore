@@ -16,6 +16,9 @@ jobs:
       FACEBOOK_APP_ID: test
       FACEBOOK_APP_SECRET: test
       FACEBOOK_CALLBACK_URL: test
+      GOOGLE_OAUTH_CLIENT_ID: test
+      GOOGLE_OAUTH_CLIENT_SECRET: test
+      GOOGLE_CALLBACK_URL: test
     services:
       postgres:
         image: postgres
