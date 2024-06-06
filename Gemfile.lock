@@ -189,6 +189,11 @@ GEM
       rack-protection
     omniauth-facebook (7.0.0)
       omniauth-oauth2 (~> 1.2)
+    omniauth-google-oauth2 (1.1.2)
+      jwt (>= 2.0)
+      oauth2 (~> 2.0)
+      omniauth (~> 2.0)
+      omniauth-oauth2 (~> 1.8)
     omniauth-oauth2 (1.8.0)
       oauth2 (>= 1.4, < 3)
       omniauth (~> 2.0)
@@ -377,6 +382,7 @@ DEPENDENCIES
   jbuilder
   letter_opener_web (~> 2.0)
   omniauth-facebook (= 7.0)
+  omniauth-google-oauth2
   omniauth-rails_csrf_protection (~> 1.0)
   pg (~> 1.1)
   pry (~> 0.14.2)

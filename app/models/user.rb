@@ -33,12 +33,23 @@
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+
+#--------------------------
+# Field's descryption:
+# ------------------------
+# uid : It stores a unique identifier associated with the user's account from the OAuth provider
+# (in this case, Google). Each user has a distinct uid assigned by the provider,
+# which allows your application to uniquely identify them.
 #
+# provider: It indicates the name of the OAuth provider being used for authentication (e.g., "google_oauth2", "facebook").
+# This field helps differentiate between different authentication methods and allows
+# your application to handle multiple authentication providers if needed.
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook]
+         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -74,4 +85,5 @@ class User < ApplicationRecord
     end
   end
   # rubocop:enable Metrics/AbcSize
+
 end
