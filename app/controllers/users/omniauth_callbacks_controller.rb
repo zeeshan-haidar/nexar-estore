@@ -1,6 +1,5 @@
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-
     # for facebook login
     def facebook
       @user = User.from_omniauth(request.env["omniauth.auth"])
@@ -15,7 +14,6 @@ module Users
 
     def google_oauth2
       user = User.from_omniauth(request.env['omniauth.auth'])
-
       if user.present?
         sign_out_all_scopes
         flash[:notice] = t 'devise.omniauth_callbacks.success', kind: 'Google'
@@ -29,6 +27,5 @@ module Users
     def failure
       redirect_to root_path
     end
-
   end
 end
