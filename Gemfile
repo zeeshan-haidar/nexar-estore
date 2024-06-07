@@ -43,13 +43,14 @@ gem 'cancancan', '~> 3.5'
 # to run async code
 gem 'sidekiq', '~> 7.0', '>= 7.0.2'
 
-gem "omniauth-rails_csrf_protection", "~> 1.0"
+gem 'omniauth', '2'
+
+gem "omniauth-rails_csrf_protection", "1.0"
 
 # login with facebook
 gem 'omniauth-facebook', '7.0'
 
-# login with google
-gem 'omniauth-google-oauth2'
+gem 'omniauth-google-oauth2', '1.1.2'
 
 
 # Use Redis adapter to run Action Cable in production
