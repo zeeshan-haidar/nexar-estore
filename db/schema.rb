@@ -28,7 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_07_194235) do
   create_table "product_images", force: :cascade do |t|
     t.bigint "product_id", null: false
     t.string "s3_url", null: false
-    t.boolean "is_primary", default: false
+    t.boolean "is_primary", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_product_images_on_product_id"
