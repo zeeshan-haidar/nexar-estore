@@ -22,21 +22,35 @@
     <%= form.text_area :description, class: 'form-control' %>
   </div>
 
-  <div class="form-group">
-    <%= form.label :price %>
-    <%= form.number_field :price, class: 'form-control' %>
+  <div class="row mt-3">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :price %>
+        <%= form.number_field :price, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :category_id %>
+        <%= form.select :category_id, options_for_select(Category.all.map { |category| [category.name, category.id] }, include_blank: 'Select Category'), {}, { class: 'form-control' } %>
+      </div>
+    </div>
   </div>
 
-  <div class="form-group">
-    <%= form.label :category_id %>
-    <%= form.select :category_id, options_for_select(Category.all.map { |category| [category.name, category.id] }, include_blank: 'Select Category'), {}, { class: 'form-control' } %>
+
+  <div class="row mt-3">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :stock_quantity %>
+        <%= form.number_field :stock_quantity, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <p>&nbsp;</p>
+      </div>
+    </div>
   </div>
-
-
-  <div class="form-group">
-    <%= form.label :stock_quantity %>
-    <%= form.number_field :stock_quantity, class: 'form-control' %>
-  </div>
-
+  <br>
   <%= form.submit class: 'btn btn-primary' %>
 <% end %>
