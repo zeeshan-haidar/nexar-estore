@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations", omniauth_callbacks: "users/omniauth_callbacks" }
 
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+
   devise_scope :user do
     # root :to => "devise/sessions#new"
     # get "sign_in", :to => "devise/sessions#new"
@@ -10,7 +12,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
-  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  namespace :admin do
+    resources :products, except: [:show]
+  end
 
   root 'pages#home'
 

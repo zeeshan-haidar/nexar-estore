@@ -128,7 +128,7 @@ This is the README file for an E-commerce website. This document provides an ove
 * Send Order notification to Admin
 
 # Notes:
-* after adding a migration and running it, ro annotation for models and spec by
+* after adding a migration and running it, do annotation for models and spec by
   bundle exec annotate command
 * install redis server version 6.2.0
 

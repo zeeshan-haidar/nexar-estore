@@ -3,6 +3,7 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
+#  admin                  :boolean          default(FALSE), not null
 #  admin_role             :boolean          default(FALSE), not null
 #  city                   :string
 #  confirmation_sent_at   :datetime
@@ -33,6 +34,7 @@
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#
 
 #--------------------------
 # Field's descryption:
