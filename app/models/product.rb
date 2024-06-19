@@ -19,4 +19,11 @@ class Product < ApplicationRecord
   validates :name, presence: true
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :stock_quantity, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  accepts_nested_attributes_for :product_images, allow_destroy: true
+  before_save :set_old_price
+
+  def set_old_price
+    discount = (25.to_f/100.to_f * price).round(2)
+    self.old_price = price + discount
+  end
 end

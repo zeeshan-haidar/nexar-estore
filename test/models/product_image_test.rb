@@ -3,8 +3,8 @@
 # Table name: product_images
 #
 #  id         :bigint           not null, primary key
+#  image      :string
 #  is_primary :boolean          default(FALSE), not null
-#  s3_url     :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  product_id :bigint           not null

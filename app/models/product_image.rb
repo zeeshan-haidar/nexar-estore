@@ -3,8 +3,8 @@
 # Table name: product_images
 #
 #  id         :bigint           not null, primary key
+#  image      :string
 #  is_primary :boolean          default(FALSE), not null
-#  s3_url     :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  product_id :bigint           not null
@@ -20,5 +20,14 @@
 class ProductImage < ApplicationRecord
   belongs_to :product
 
-  validates :s3_url, presence: true
+  mount_uploader :image, ProductImageUploader
+
+  validate :only_one_primary_image, if: :is_primary?
+
+  private
+  def only_one_primary_image
+    if ProductImage.where(product_id: product_id, is_primary: true).where.not(id: id).exists?
+      errors.add(:is_primary, 'There can be only one primary image per product.')
+    end
+  end
 end
