@@ -70,7 +70,7 @@
             </br>
             <%= image_form.check_box :is_primary, { checked: image_form.object.is_primary } %>
             <%= image_form.label :primary, 'Set as Primary' %>
-            <a href="#" class="remove_image" style="display: <%= "none" if img_display == "block" %>">Remove Image</a>
+            <a href="#" class="remove_image" onclick="removeImage(event)" style="display: <%= img_display == "block" ? "block" : "none" %>">Remove Image</a>
             </br> </br></br>
           </fieldset>
         <% end %>
@@ -94,19 +94,13 @@
     reader.readAsDataURL(input.files[0]);
   }
 
-  document.addEventListener('DOMContentLoaded', function() {
-    const formGroup = addImageButton.closest('.form-group');
-
-    formGroup.addEventListener('click', function(e) {
-      if (e.target.classList.contains('remove_image')) {
-        e.preventDefault();
-        const fieldset = e.target.closest('fieldset');
-        fieldset.querySelector('input[type="file"]').value = '';
-        fieldset.querySelector('img').src = '';
-        fieldset.querySelector('img').style.display = 'none';
-        //fieldset.style.display = 'none';
-      }
-    });
-  });
+  function removeImage(e) {
+    e.preventDefault();
+    const fieldset = e.target.closest('fieldset');
+    fieldset.querySelector('input[type="file"]').value = '';
+    fieldset.querySelector('img').src = '';
+    fieldset.querySelector('img').style.display = 'none';
+      //fieldset.style.display = 'none';
+}
 </script>
 
