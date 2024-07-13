@@ -9,7 +9,7 @@ class Admin::ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    3.times { @product.product_images.build }
+    4.times { @product.product_images.build }
   end
 
   def create
@@ -22,7 +22,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
-    (3 - @product.product_images.size).times { @product.product_images.build }
+    (4 - @product.product_images.size).times { @product.product_images.build }
   end
 
   def update
