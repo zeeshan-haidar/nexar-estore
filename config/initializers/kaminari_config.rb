@@ -10,4 +10,4 @@ Kaminari.configure do |config|
   # config.params_on_first_page = false
 end
 
-PAGE_SIZES = [25, 50, 75]
+PAGE_SIZES = [25, 50, 75].freeze

@@ -9,7 +9,7 @@
 
 total_categories = Category.all.count
 
-if total_categories > 0
+if total_categories.positive?
   puts "Data Already Seeded"
   return
 end
@@ -33,16 +33,16 @@ end
 
 # Define the product data
 products = [
-  { name: 'Xiaomi Redmi Note 13', price: 47499 },
-  { name: 'VGO TEL Note 23', price: 26999 },
-  { name: 'ZTE Blade A72s', price: 20499 },
-  { name: 'Xiaomi Redmi A3x', price: 18199 },
-  { name: 'Xiaomi Redmi Note 13 Pro', price: 64499 },
-  { name: 'Realme C63', price: 34999 },
-  { name: 'Itel S23 4G', price: 18999 },
-  { name: 'Vivo Y100', price: 54999 },
-  { name: 'Vivo Y18', price: 37999 },
-  { name: 'Samsung Galaxy A05', price: 23999 }
+  { name: 'Xiaomi Redmi Note 13', price: 47_499 },
+  { name: 'VGO TEL Note 23', price: 26_999 },
+  { name: 'ZTE Blade A72s', price: 20_499 },
+  { name: 'Xiaomi Redmi A3x', price: 18_199 },
+  { name: 'Xiaomi Redmi Note 13 Pro', price: 64_499 },
+  { name: 'Realme C63', price: 34_999 },
+  { name: 'Itel S23 4G', price: 18_999 },
+  { name: 'Vivo Y100', price: 54_999 },
+  { name: 'Vivo Y18', price: 37_999 },
+  { name: 'Samsung Galaxy A05', price: 23_999 }
 ]
 
 # Insert products into the products table
@@ -75,9 +75,9 @@ smart_watches = [
   { name: 'S9 Ultra Bluetooth Smart Watch', price: 1499 },
   { name: 'I9 Ultra Max Smart Watch', price: 1599 },
   { name: 'Realme Watch', price: 3949 },
-  { name: 'Mibro Watch Lite2', price: 11799 },
-  { name: 'Haylou RS4 Plus Smart Watch', price: 10999 },
-  { name: 'Itel IWS N8 Smart Watch', price: 11999 },
+  { name: 'Mibro Watch Lite2', price: 11_799 },
+  { name: 'Haylou RS4 Plus Smart Watch', price: 10_999 },
+  { name: 'Itel IWS N8 Smart Watch', price: 11_999 },
   { name: 'Xiaomi Redmi Watch 3 Active', price: 9599 },
   { name: 'HK9 Pro Plus Smart Watch', price: 6199 }
 ]

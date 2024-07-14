@@ -23,7 +23,7 @@ class Product < ApplicationRecord
   before_save :set_old_price
 
   def set_old_price
-    discount = (25.to_f/100.to_f * price).round(2)
+    discount = (25.to_f / 100 * price).round(2)
     self.old_price = price + discount
   end
 end

@@ -25,9 +25,10 @@ class ProductImage < ApplicationRecord
   validate :only_one_primary_image, if: :is_primary?
 
   private
+
   def only_one_primary_image
-    if ProductImage.where(product_id: product_id, is_primary: true).where.not(id: id).exists?
-      errors.add(:is_primary, 'There can be only one primary image per product.')
-    end
+    return unless ProductImage.where(product_id:, is_primary: true).where.not(id:).exists?
+
+    errors.add(:is_primary, 'There can be only one primary image per product.')
   end
 end
