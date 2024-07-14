@@ -4,7 +4,7 @@ class Admin::ProductsController < ApplicationController
   before_action :set_product, only: [:edit, :update, :destroy]
 
   def index
-    @products = @products.page(params[:page]).per(10) # 10 products per page
+    @products = @products.order(id: :asc).page(params[:page]).per(10) # 10 products per page
   end
 
   def new
