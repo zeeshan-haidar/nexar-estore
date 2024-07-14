@@ -52,6 +52,14 @@ gem 'omniauth-facebook', '7.0'
 
 gem 'omniauth-google-oauth2', '1.1.2'
 
+# for pagination
+gem 'kaminari', '1.2.2'
+
+# for file upload
+gem 'carrierwave', '3.0.3'
+
+# for aws s3 support
+gem 'fog-aws', '3.21.0'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"

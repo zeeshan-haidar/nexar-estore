@@ -1,0 +1,106 @@
+<!-- app/views/admin/products/_form.html.erb -->
+
+<%= form_with(model: [:admin, @product], local: true) do |form| %>
+  <% if @product.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h4>
+      <ul>
+        <% @product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: 'form-control' %>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :price %>
+        <%= form.number_field :price, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :category_id %>
+        <%= form.select :category_id, options_for_select(Category.all.map { |category| [category.name, category.id] }, include_blank: 'Select Category'), {}, { class: 'form-control' } %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :stock_quantity %>
+        <%= form.number_field :stock_quantity, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <p>&nbsp;</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.fields_for :product_images do |image_form| %>
+          <fieldset>
+            <%= image_form.label 'Product Image' %>
+            <%= image_form.file_field :image, class: 'form-control-file', accept: 'image/*', onchange: 'previewImage(event, this)' %>
+            <%
+              img_url=nil
+              img_display='none'
+              if image_form.object&.image&.url.present?
+                img_url = image_form.object&.image&.url
+                img_display = 'block'
+              end
+            %>
+            <img src="<%= img_url %>" alt="Image preview" class="img-thumbnail mt-3" style="max-width: 200px; display: <%=img_display%>">
+            </br>
+            <%= image_form.check_box :is_primary, { checked: image_form.object.is_primary } %>
+            <%= image_form.label :primary, 'Set as Primary' %>
+            <a href="#" class="remove_image" onclick="removeImage(event)" style="display: <%= img_display == "block" ? "block" : "none" %>">Remove Image</a>
+            </br> </br></br>
+          </fieldset>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <br>
+  <%= form.submit class: 'btn btn-primary' %>
+<% end %>
+
+<script>
+  function previewImage(event, input) {
+    const preview = input.nextElementSibling;
+    const reader = new FileReader();
+
+    reader.onload = function() {
+      preview.src = reader.result;
+      preview.style.display = 'block';
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  }
+
+  function removeImage(e) {
+    e.preventDefault();
+    const fieldset = e.target.closest('fieldset');
+    fieldset.querySelector('input[type="file"]').value = '';
+    fieldset.querySelector('img').src = '';
+    fieldset.querySelector('img').style.display = 'none';
+      //fieldset.style.display = 'none';
+}
+</script>
+

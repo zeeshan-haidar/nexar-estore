@@ -1,0 +1,40 @@
+<!-- app/views/admin/products/index.html.erb -->
+<div class="container w-100 p-4 my-5">
+  <div class="card mb-3 p-lg-5">
+    <h2>Products</h2>
+    <%= link_to 'New Product', new_admin_product_path, class: 'btn btn-primary my-3', style: "width:15%" %>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Stock Quantity</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.id %></td>
+          <td><%= product.name %></td>
+          <td><%= product.price %></td>
+          <td><%= product.category.name if product.category %></td>
+          <td><%= product.stock_quantity %></td>
+          <td>
+            <%= link_to 'Edit', edit_admin_product_path(product), class: 'btn btn-warning btn-sm' %>
+            <%= link_to 'Delete', admin_product_path(product), data: { confirm: 'Are you sure?', "turbo-method": :delete }, class: 'btn btn-danger btn-sm' %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="clearfix">
+      <div class="pull-left">
+        <%= paginate @products %>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

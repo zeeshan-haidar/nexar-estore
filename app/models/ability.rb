@@ -7,7 +7,7 @@ class Ability
     # Define abilities for the user here. For example:
     #
     #   return unless user.present?
-    can :read, :all, user
+    #   can :read, :all
     #   return unless user.admin?
     #   can :manage, :all
     #
@@ -27,15 +27,13 @@ class Ability
     #   can :update, Article, published: true
     #
     # See the wiki for details:
-    # https://github.com/CanCanCommunity/cancancan/blob/develop/docs/define_check_abilities.
+    # https://github.com/CanCanCommunity/cancancan/blob/develop/docs/define_check_abilities.md
+    user ||= User.new # guest user (not logged in)
 
-    # Here follows an example of rules defined to read a Post model.
-    # can :read, Post, public: true
-    #
-    # return unless user.present?  # additional permissions for logged in users (they can read their own posts)
-    # can :read, Post, user: user
-    #
-    # return unless user.admin?  # additional permissions for administrators
-    # can :read, Post
+    if user.admin?
+      can :manage, :all
+    else
+      can :read, :all
+    end
   end
 end
