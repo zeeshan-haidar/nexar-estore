@@ -32,7 +32,7 @@
     <div class="col-md-6">
       <div class="form-group">
         <%= form.label :category_id %>
-        <%= form.select :category_id, options_for_select(Category.all.map { |category| [category.name, category.id] }, include_blank: 'Select Category'), {}, { class: 'form-control' } %>
+        <%= form.select :category_id, options_for_select(Category.all.map { |category| [category.name, category.id] }, form.object.category_id), {}, { class: 'form-control' } %>
       </div>
     </div>
   </div>

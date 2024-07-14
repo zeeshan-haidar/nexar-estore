@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
   def home
+    @products = Product.all.sample(8)
+    @recently_viewd_products = Product.all.sample(6)
   end
 
   def product

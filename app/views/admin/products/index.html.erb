@@ -19,7 +19,7 @@
         <tr>
           <td><%= product.id %></td>
           <td><%= product.name %></td>
-          <td><%= product.price %></td>
+          <td><%= "RS "+product.price.to_i.to_s %></td>
           <td><%= product.category.name if product.category %></td>
           <td><%= product.stock_quantity %></td>
           <td>
