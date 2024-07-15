@@ -28,10 +28,10 @@ class Product < ApplicationRecord
   end
 
   def discount
-    self.old_price - self.price
+    old_price - price
   end
 
   def main_images
-    self.product_images.where.not(image: nil).where(is_primary: false)
+    product_images.where.not(image: nil).where(is_primary: false)
   end
 end
