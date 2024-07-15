@@ -26,4 +26,12 @@ class Product < ApplicationRecord
     discount = (25.to_f / 100 * price).round(2)
     self.old_price = price + discount
   end
+
+  def discount
+    self.old_price - self.price
+  end
+
+  def main_images
+    self.product_images.where.not(image: nil).where(is_primary: false)
+  end
 end
