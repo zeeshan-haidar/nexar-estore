@@ -86,7 +86,7 @@
   <!--          </div>-->
             <div class="card-body p-0 pt-2 mx-5 my-3">
               <h5 align="center" class="card-title">RS <%= product.price.to_i %></h5>
-              <a href="<%= pages_product_path(id: product.id) %>"><p class="card-text mb-0" align="center" title="<%= product.name %>"><%= truncate(product.name, length: 25, omission: '...') %></p></a>
+              <a href="<%= pages_product_path(id: product.id) %>"><p class="card-text mb-0" align="center" title="<%= product.name %>"><%= truncate(product.name, length: 24, omission: '...') %></p></a>
             </div>
             <!-- Button to add the product to the cart -->
             <button class="btn btn-primary add-to-cart ms-6 mb-4">
