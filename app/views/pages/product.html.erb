@@ -1,4 +1,7 @@
 <div class="container">
+  <%
+    #binding.pry
+  %>
   <header class="header" style="display: none;">
     <div class="header_main">
       <div class="container">
@@ -31,28 +34,20 @@
               <section id="main-slider" class="splide" aria-label="My Awesome Gallery">
                 <div class="splide__track">
                   <ul class="splide__list">
-                    <li class="splide__slide">
-                      <%= image_tag("products/prod1.webp") %>
-                    </li>
-                    <li class="splide__slide">
-                      <%= image_tag("products/prod2.webp") %>
-                    </li>
-                    <li class="splide__slide">
-                      <%= image_tag("products/prod3.webp") %>
-                    </li>
+                    <% @product.main_images.each do | product_image | %>
+                      <li class="splide__slide">
+                        <%= image_tag(product_image.image.url) %>
+                      </li>
+                    <% end %>
                   </ul>
                 </div>
               </section>
               <ul id="thumbnails" class="thumbnails">
-                <li class="thumbnail">
-                  <%= image_tag("products/prod1.webp") %>
-                </li>
-                <li class="thumbnail">
-                  <%= image_tag("products/prod2.webp") %>
-                </li>
-                <li class="thumbnail">
-                  <%= image_tag("products/prod3.webp") %>
-                </li>
+                <% @product.main_images.each do | product_image | %>
+                  <li class="thumbnail">
+                    <%= image_tag(product_image.image.url) %>
+                  </li>
+                <% end %>
               </ul>
 
             </div>
@@ -65,24 +60,33 @@
                     <li class="breadcrumb-item active">Accessories</li>
                   </ol>
                 </nav>
-                <div class="product_name">Zero Caliber Pro All-Metal Appearance</div>
-                <div class="product-rating">
-                    <div class="ratings" style="margin:0">
-                      <span>5.0</span>
-                    <i class="fa fa-star rating-color"></i>
-                    <i class="fa fa-star rating-color"></i>
-                    <i class="fa fa-star rating-color"></i>
-                    <i class="fa fa-star rating-color"></i>
-                      <i class="fa fa-star"></i><span>&nbsp;&nbsp;&nbsp;37 Ratings</span>
-                  </div></div>
-                <div> <span class="product_price">$ 29,000</span> <strike class="product_discount"> <span style='color:black'>$ 2,000</span> </strike> </div>
-                <div> <span class="product_saved">You Saved:</span> <span style='color:black'>$ 2,000</span> </div>
+                <div class="product_name"><%= @product.name %></div>
+<!--                <div class="product-rating">-->
+<!--                    <div class="ratings" style="margin:0">-->
+<!--                      <span>5.0</span>-->
+<!--                    <i class="fa fa-star rating-color"></i>-->
+<!--                    <i class="fa fa-star rating-color"></i>-->
+<!--                    <i class="fa fa-star rating-color"></i>-->
+<!--                    <i class="fa fa-star rating-color"></i>-->
+<!--                      <i class="fa fa-star"></i><span>&nbsp;&nbsp;&nbsp;37 Ratings</span>-->
+<!--                  </div></div>-->
+                <div> <span class="product_price"><%= "RS "+@product.price.to_i.to_s %></span> <strike class="product_discount"> <span style='color:black'><%= "RS "+@product.old_price.to_i.to_s  %></span> </strike> </div>
+                <div> <span class="product_saved">You Saved:</span> <span style='color:black'><%= @product.discount.to_i %></span> </div>
                 <hr class="singleline">
-                <div> <span class="product_info">Warranty: 6 months warranty</span><br> <span class="product_info">7 Days easy return policy</span><br><span class="product_saved">Availability</span><br><span class="h5" style="color:forestgreen">In Stock</span></div>
+                <div> <span class="product_info">Warranty: 6 months warranty</span><br> <span class="product_info">7 Days easy return policy</span><br><span class="product_saved">Availability</span><br>
+                  <% if @product.stock_quantity > 0 %>
+                    <span><%= @product.stock_quantity %>&nbsp;<%= @product.stock_quantity == 1 ? "Item": "Items" %> </span><span class="h5" style="color:forestgreen">In Stock</span>
+                  <% else %>
+                    <span><span class="h5" style="color:red">Out of Stock</span>
+                  <% end %>
+                </div>
                 <hr class="singleline">
                 <div class="row">
                   <div class="col-xs-6">
-                    <button class="btn btn-primary shop-button"><i class="fa fa-shopping-cart"></i> Add to cart</button>&nbsp;&nbsp;<button type="button" class="btn shop-button btn-outline-primary"><i class="fas fa-plus"></i> Add to wishlist</button>&nbsp;&nbsp;<div class="product_fav"><i class="fas fa-heart"></i></div>
+                    <% if @product.stock_quantity > 0 %>
+                      <button class="btn btn-primary shop-button"><i class="fa fa-shopping-cart"></i> Add to cart</button>&nbsp;
+                    <% end %>
+                    &nbsp;<button type="button" class="btn shop-button btn-outline-primary"><i class="fas fa-plus"></i> Add to wishlist</button>&nbsp;&nbsp;<div class="product_fav"><i class="fas fa-heart"></i></div>
                   </div>
                 </div>
               </div>
@@ -96,41 +100,13 @@
           </header>
 
           <div class="row gy-3">
-            <div class="col-lg-2 col-md-4 col-4">
-              <a href="#" class="img-wrap">
-                <%= image_tag("products/zero-caliber-pro-all-metal-appearance-pakistan-priceoye-ylnh5-270x270.webp", class: "img-thumbnail recent-products", height: "200", width: "200") %>
-              </a>
-            </div>
-            <!-- col.// -->
-            <div class="col-lg-2 col-md-4 col-4">
-              <a href="#" class="img-wrap">
-                <img height="200" width="200" class="img-thumbnail" src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/2.webp" />
-              </a>
-            </div>
-            <!-- col.// -->
-            <div class="col-lg-2 col-md-4 col-4">
-              <a href="#" class="img-wrap">
-                <img height="200" width="200" class="img-thumbnail" src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/3.webp" />
-              </a>
-            </div>
-            <!-- col.// -->
-            <div class="col-lg-2 col-md-4 col-4">
-              <a href="#" class="img-wrap">
-                <img height="200" width="200" class="img-thumbnail" src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/4.webp" />
-              </a>
-            </div>
-            <!-- col.// -->
-            <div class="col-lg-2 col-md-4 col-4">
-              <a href="#" class="img-wrap">
-                <img height="200" width="200" class="img-thumbnail" src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/5.webp" />
-              </a>
-            </div>
-            <!-- col.// -->
-            <div class="col-lg-2 col-md-4 col-4">
-              <a href="#" class="img-wrap">
-                <img height="200" width="200" class="img-thumbnail" src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/6.webp" />
-              </a>
-            </div>
+            <% @related_products.each do |product| %>
+              <div class="col-lg-2 col-md-4 col-4">
+                <a href="<%= pages_product_path(id: product.id)  %>" class="img-wrap">
+                  <%= image_tag(primary_image_url(product), class: "img-thumbnail recent-products", height: "200", width: "200") %>
+                </a>
+              </div>
+            <% end %>
           </div>
         </div>
       </section>
@@ -140,42 +116,41 @@
   </div>
 
 <% content_for :custom_script_after do %>
-  <%= javascript_include_tag 'splide-4.0.1.min.js' %>
   <script type="text/javascript">
+    $(document).ready(function() {
       var splide = new Splide("#main-slider", {
-          width: 270,
-          height: 270,
-          pagination: false,
-          cover: false
+        width: 270,
+        height: 270,
+        pagination: false,
+        cover: false
       });
 
       var thumbnails = document.getElementsByClassName("thumbnail");
       var current;
 
       for (var i = 0; i < thumbnails.length; i++) {
-          initThumbnail(thumbnails[i], i);
+        initThumbnail(thumbnails[i], i);
       }
 
       function initThumbnail(thumbnail, index) {
-          thumbnail.addEventListener("click", function () {
-              splide.go(index);
-          });
+        thumbnail.addEventListener("click", function () {
+          splide.go(index);
+        });
       }
-
       splide.on("mounted move", function () {
-          var thumbnail = thumbnails[splide.index];
+        var thumbnail = thumbnails[splide.index];
 
-          if (thumbnail) {
-              if (current) {
-                  current.classList.remove("is-active");
-              }
-
-              thumbnail.classList.add("is-active");
-              current = thumbnail;
+        if (thumbnail) {
+          if (current) {
+            current.classList.remove("is-active");
           }
-      });
 
+          thumbnail.classList.add("is-active");
+          current = thumbnail;
+        }
+      });
       splide.mount();
+    });
   </script>
 <% end %>
 

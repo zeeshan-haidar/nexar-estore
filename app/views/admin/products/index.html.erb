@@ -19,12 +19,12 @@
         <tr>
           <td><%= product.id %></td>
           <td><%= product.name %></td>
-          <td><%= product.price %></td>
+          <td><%= "RS "+product.price.to_i.to_s %></td>
           <td><%= product.category.name if product.category %></td>
           <td><%= product.stock_quantity %></td>
           <td>
             <%= link_to 'Edit', edit_admin_product_path(product), class: 'btn btn-warning btn-sm' %>
-            <%= link_to 'Delete', admin_product_path(product), data: { confirm: 'Are you sure?', "turbo-method": :delete }, class: 'btn btn-danger btn-sm' %>
+            <%= link_to 'Delete', admin_product_path(product), data: { "turbo-confirm": 'Are you sure?', "turbo-method": :delete }, class: 'btn btn-danger btn-sm' %>
           </td>
         </tr>
       <% end %>
