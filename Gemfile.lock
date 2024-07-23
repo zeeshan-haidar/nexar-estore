@@ -423,7 +423,7 @@ DEPENDENCIES
   capybara
   carrierwave (= 3.0.3)
   debug
-  devise (~> 4.9, >= 4.9.3)
+  devise (= 4.9.3)
   dotenv-rails
   factory_bot_rails
   faker
