@@ -33,11 +33,10 @@ gem "jbuilder"
 # Annotates Rails/ActiveRecord Models, routes, fixtures, and others based on the database schema.
 gem 'annotate', '~> 3.1', '>= 3.1.1'
 
+# Devise gem for authentication
+gem 'devise', '4.9.3'
 
-#Devise gem for authentication
-gem 'devise', '~> 4.9', '>= 4.9.3'
-
-#cancancan gem for authorization
+# cancancan gem for authorization
 gem 'cancancan', '~> 3.5'
 
 # to run async code

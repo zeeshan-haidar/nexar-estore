@@ -3,7 +3,6 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
-#  admin                  :boolean          default(FALSE), not null
 #  admin_role             :boolean          default(FALSE), not null
 #  city                   :string
 #  confirmation_sent_at   :datetime

@@ -8,7 +8,7 @@ class Ability
     #
     #   return unless user.present?
     #   can :read, :all
-    #   return unless user.admin?
+    #   return unless user.admin_role?
     #   can :manage, :all
     #
     # The first argument to `can` is the action you are giving the user
@@ -30,7 +30,7 @@ class Ability
     # https://github.com/CanCanCommunity/cancancan/blob/develop/docs/define_check_abilities.md
     user ||= User.new # guest user (not logged in)
 
-    if user.admin?
+    if user.admin_role?
       can :manage, :all
     else
       can :read, :all
