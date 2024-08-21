@@ -1,5 +1,7 @@
 class Admin::CategoriesController < ApplicationController
-  before_action :set_category, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
+  load_and_authorize_resource
+  before_action :set_category, only: %i[ edit update destroy ]
 
   # GET /admin/categories or /admin/categories.json
   def index
