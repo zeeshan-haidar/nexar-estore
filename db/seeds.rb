@@ -138,4 +138,3 @@ Product.all.each do |product|
   product.price = (product.price / current_dollar_rate).round(2)
   product.save
 end
-
