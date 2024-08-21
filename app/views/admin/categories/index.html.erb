@@ -1,10 +1,33 @@
-<div class="w-full">
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Categories</h1>
-    <%= link_to 'New category', new_admin_category_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
-
-  <div id="admin_categories" class="min-w-full">
-    <%= render @categories %>
+<div class="container w-50 p-4 my-5">
+  <div class="card mb-3 p-lg-5">
+    <h2>Categories</h2>
+    <%= link_to 'New Category', new_admin_category_path, class: 'btn btn-primary my-3', style: "width:25%" %>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.id %></td>
+          <td><%= category.name %></td>
+          <td>
+            <%= link_to 'Edit', edit_admin_category_path(category), class: 'btn btn-warning btn-sm' %>
+            <%= link_to 'Delete', admin_category_path(category), data: { "turbo-confirm": 'Are you sure?', "turbo-method": :delete }, class: 'btn btn-danger btn-sm' %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="clearfix">
+      <div class="pull-left">
+        <%= paginate @categories %>
+      </div>
+    </div>
   </div>
 </div>
+</div>
+

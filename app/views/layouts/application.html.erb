@@ -5,9 +5,10 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <title>Material Design for Bootstrap</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= javascript_importmap_tags %>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+  <%#= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_include_tag 'splide-4.0.1.min.js' %>
   <!-- Font Awesome -->
@@ -35,9 +36,6 @@
           <div class="order-lg-last col-lg-5 col-sm-8 col-8">
             <div class="d-flex float-end">
               <% if user_signed_in? %>
-                <% if current_user.admin_role? %>
-                  <%= link_to 'Manage Products', admin_products_path, class: 'me-1 border rounded py-1 px-3 nav-link d-flex align-items-center' %>
-                <% end %>
                 <a href=<%= sign_out_path %> class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center" target="_self"> <i class="fas fa-sign-out-alt m-1 me-md-2"></i><p class="d-none d-md-block mb-0">Sign out</p> </a>
               <% else %>
                 <a href=<%= new_user_session_url %> class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center" target="_self"> <i class="fas fa-sign-in-alt m-1 me-md-2" aria-hidden="true"></i><p class="d-none d-md-block mb-0">Sign in</p> </a>
@@ -101,6 +99,25 @@
               </ul>
             </li>
             <% end %>
+
+            <% if user_signed_in? && current_user.admin_role? %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-mdb-toggle="dropdown" data-turbo="false"  aria-expanded="false">
+                  Manage
+                </a>
+                <!-- Dropdown menu -->
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" data-turbo="false">
+                  <li>
+                    <a class="dropdown-item" href="<%= admin_categories_path %>">Categories</a>
+                  </li>
+                  <li><hr class="dropdown-divider" href="<%= admin_products_path %>"/></li>
+                  <li>
+                    <a class="dropdown-item" href="<%= admin_products_path %>">Products</a>
+                  </li>
+                </ul>
+              </li>
+            <% end %>
+
             <li class="nav-item">
               <a class="nav-link" href="#">Categories</a>
             </li>
@@ -243,7 +260,7 @@
 
           <!--- language selector --->
           <div class="dropdown dropup">
-            <a class="dropdown-toggle text-white" href="#" id="Dropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false"> <i class="flag-united-kingdom flag m-0 me-1"></i>English </a>
+            <a class="dropdown-toggle text-white" href="#" id="Dropdown"  role="button" data-mdb-toggle="dropdown" aria-expanded="false"> <i class="flag-united-kingdom flag m-0 me-1"></i>English </a>
 
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="Dropdown">
               <li>
@@ -282,15 +299,13 @@
     </div>
   </footer>
   <!-- Footer -->
-  <!-- Footer -->
   <%= yield :custom_script_before %>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <%= javascript_importmap_tags %>
   <%= javascript_include_tag 'mdb.min.js' %>
   <script type="text/javascript">
       document.addEventListener("DOMContentLoaded", function() {
           // Global Initialization (initialize all components)
-          //M.AutoInit();
+          // M.AutoInit();
       });
   </script>
   <%= yield :custom_script_after %>
