@@ -130,3 +130,11 @@ speakers.each do |speaker|
 end
 
 puts "Speakers inserted successfully!"
+
+# convert the price from RS to Dollar
+current_dollar_rate = 277.16
+
+Product.all.each do |product|
+  product.price = (product.price / current_dollar_rate).round(2)
+  product.save
+end
