@@ -1,5 +1,5 @@
 module Admin
-  class CategoriesHelper
+  module CategoriesHelper
     def test; end
   end
 end
