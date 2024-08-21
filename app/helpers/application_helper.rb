@@ -1,6 +1,5 @@
 module ApplicationHelper
-
-  def get_categories
+  def product_categories
     Category.order(name: :asc)
   end
 end
