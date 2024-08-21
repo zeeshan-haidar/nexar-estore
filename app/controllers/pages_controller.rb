@@ -1,7 +1,12 @@
 class PagesController < ApplicationController
   def home
-    @products = Product.all.sample(8)
-    @recently_viewd_products = Product.all.sample(6)
+    if params[:category_id].present?
+      @products = Product.where(category_id: params[:category_id]).sample(8)
+      @recently_viewd_products = Product.where(category_id: params[:category_id]).sample(6)
+    else
+      @products = Product.all.sample(8)
+      @recently_viewd_products = Product.all.sample(6)
+    end
   end
 
   def product
