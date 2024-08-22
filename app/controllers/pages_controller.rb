@@ -1,12 +1,12 @@
 class PagesController < ApplicationController
   def home
-    if params[:category_id].present?
-      @products = Product.where(category_id: params[:category_id]).sample(8)
-      @recently_viewd_products = Product.where(category_id: params[:category_id]).sample(6)
-    else
-      @products = Product.all.sample(8)
-      @recently_viewd_products = Product.all.sample(6)
-    end
+    @products = Product.all.sample(8)
+    @recently_viewd_products = Product.all.sample(6)
+  end
+
+  def product_category
+    @products = Product.where(category_id: params[:category_id]).order(id: :asc).page(params[:page]).per(8)
+    @category = @products.first.category
   end
 
   def product
