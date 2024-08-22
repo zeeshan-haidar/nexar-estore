@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   get 'pages/profile' => 'pages#profile'
 
+  get 'pages/product_category' => 'pages#product_category'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
