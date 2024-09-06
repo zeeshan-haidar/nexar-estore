@@ -19,13 +19,21 @@ Rails.application.routes.draw do
 
   root 'pages#home'
 
-  get 'pages/product' => 'pages#product'
+  get 'pages/product_detail' => 'pages#product_detail'
 
   get 'pages/laptop' => 'pages#laptop'
 
   get 'pages/profile' => 'pages#profile'
 
   get 'pages/product_category' => 'pages#product_category'
+
+  get 'pages/cart' => 'pages#cart'
+
+  get 'cart/show' => 'cart#show'
+
+  post 'cart/add_product' => 'cart#add_product'
+
+  post 'cart/remove_product' => 'cart#remove_product'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

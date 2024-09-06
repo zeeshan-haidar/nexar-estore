@@ -1,0 +1,15 @@
+<turbo-frame id="flash">
+  <% flash.each do |type, msg| %>
+    <div class="container">
+      <% if type == "notice" %>
+        <div class="alert alert-info">
+          <span><%= msg %></span>
+        </div>
+      <% else %>
+        <div class="alert alert-danger">
+          <span><%= msg %></span>
+        </div>
+      <% end%>
+    </div>
+  <% end %>
+</turbo-frame>

@@ -1,0 +1,124 @@
+<div class="container">
+  <div class="product-details">
+    <div class="container-fluid" style=" background-color: #fff; padding: 11px;">
+      <div class="row">
+            <div class="col-lg-6 my-5">
+              <section id="main-slider" class="splide" aria-label="My Awesome Gallery">
+                <div class="splide__track">
+                  <ul class="splide__list">
+                    <% @product.main_images.each do | product_image | %>
+                      <li class="splide__slide">
+                        <%= image_tag(product_image.image.url) %>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </section>
+              <ul id="thumbnails" class="thumbnails">
+                <% @product.main_images.each do | product_image | %>
+                  <li class="thumbnail">
+                    <%= image_tag(product_image.image.url) %>
+                  </li>
+                <% end %>
+              </ul>
+
+            </div>
+            <div class="col-lg-6 order-3">
+              <div class="product_description">
+                <div class="product_name"><%= @product.name %></div>
+<!--                <div class="product-rating">-->
+<!--                    <div class="ratings" style="margin:0">-->
+<!--                      <span>5.0</span>-->
+<!--                    <i class="fa fa-star rating-color"></i>-->
+<!--                    <i class="fa fa-star rating-color"></i>-->
+<!--                    <i class="fa fa-star rating-color"></i>-->
+<!--                    <i class="fa fa-star rating-color"></i>-->
+<!--                      <i class="fa fa-star"></i><span>&nbsp;&nbsp;&nbsp;37 Ratings</span>-->
+<!--                  </div></div>-->
+                <div> <span class="product_price"><%= "$ #{@product.price}" %></span> <strike class="product_discount"> <span style='color:black'><%= "$ #{@product.old_price}"  %></span> </strike> </div>
+                <div> <span class="product_saved">You Saved:</span> <span style='color:black'><%= @product.discount %></span> </div>
+                <hr class="singleline">
+                <div> <span class="product_info">Warranty: 6 months warranty</span><br> <span class="product_info">7 Days easy return policy</span><br><span class="product_saved">Availability</span><br>
+                  <% if @product.stock_quantity > 0 %>
+                    <span><%= @product.stock_quantity %>&nbsp;<%= @product.stock_quantity == 1 ? "Item": "Items" %> </span><span class="h5" style="color:forestgreen">In Stock</span>
+                  <% else %>
+                    <span><span class="h5" style="color:red">Out of Stock</span>
+                  <% end %>
+                </div>
+                <hr class="singleline">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <% if @product.stock_quantity > 0 %>
+                      <%= button_to cart_add_product_path(product_id: @product.id), method: :post, class: "btn btn-primary shop-button", data: { turbo_frame: "my_cart" }, form: { style: "display: inline;" }  do %>
+                        <i class="fa fa-shopping-cart"></i> Add to cart
+                      <% end %>
+                    <% end %>
+                    &nbsp;<button type="button" class="btn shop-button btn-outline-primary"><i class="fas fa-plus"></i> Add to wishlist</button>&nbsp;&nbsp;<div class="product_fav"><i class="fas fa-heart"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      <!-- Related Products -->
+        <section class="mt-5 mb-4">
+        <div class="container text-dark">
+          <header class="">
+            <h3 class="section-title">Related Products</h3>
+          </header>
+
+          <div class="row gy-3">
+            <% @related_products.each do |product| %>
+              <div class="col-lg-2 col-md-4 col-4">
+                <a href="<%= pages_product_detail_path(id: product.id)  %>" class="img-wrap">
+                  <%= image_tag(primary_image_url(product), class: "img-thumbnail recent-products", height: "200", width: "200") %>
+                </a>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </section>
+      <!-- Related Products -->
+      </div>
+    </div>
+  </div>
+
+<% content_for :custom_script_after do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var splide = new Splide("#main-slider", {
+        width: 270,
+        height: 270,
+        pagination: false,
+        cover: false
+      });
+
+      var thumbnails = document.getElementsByClassName("thumbnail");
+      var current;
+
+      for (var i = 0; i < thumbnails.length; i++) {
+        initThumbnail(thumbnails[i], i);
+      }
+
+      function initThumbnail(thumbnail, index) {
+        thumbnail.addEventListener("click", function () {
+          splide.go(index);
+        });
+      }
+      splide.on("mounted move", function () {
+        var thumbnail = thumbnails[splide.index];
+
+        if (thumbnail) {
+          if (current) {
+            current.classList.remove("is-active");
+          }
+
+          thumbnail.classList.add("is-active");
+          current = thumbnail;
+        }
+      });
+      splide.mount();
+    });
+  </script>
+<% end %>
+
+
