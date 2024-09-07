@@ -1,0 +1,24 @@
+<turbo-frame id="cart_item_quantity_<%= product.id %>">
+  <div class="d-flex mb-4" style="max-width: 300px">
+    <%= button_to cart_remove_product_path(product_id: product.id, cart_page: true), method: :post, class: "btn btn-primary px-3 ms-2", data: { mdb_button_init: true, mdb_ripple_init: true }, form: { style: "display: inline;" } do %>
+        <i class="fas fa-minus"></i>
+    <% end %>
+     &nbsp;&nbsp;
+    <div  class="form-outline">
+      <input id="form1" min="0" readonly name="quantity" value=<%= cart_data[product.id.to_s] %> type="number" class="form-control" />
+      <label class="form-label" for="form1">Quantity</label>
+    </div>
+
+    <%= button_to cart_add_product_path(product_id: product.id, cart_page: true), method: :post, class: "btn btn-primary px-3 ms-2", data: { mdb_button_init: true, mdb_ripple_init: true }, form: { style: "display: inline;" } do %>
+      <i class="fas fa-plus"></i>
+    <% end %>
+  </div>
+
+  <!-- to make the floating label to go back to its default position -->
+  <script type="text/javascript" charset="utf-8">
+    document.querySelectorAll('.form-outline').forEach((formOutline) => {
+      // initialize form inputs for mdb
+      new mdb.Input(formOutline).init();
+    });
+  </script>
+</turbo-frame>

@@ -78,3 +78,19 @@
 .was-validated .form-control:invalid  {
   margin-bottom: 0 !important;
 }
+
+/**  -------------------------- Cart Button on main navigation ----------------       ***/
+
+.my-cart:after{
+  content: attr(value);
+  font-size: 16px;
+  background: #D10000;
+  border-radius: 50%;
+  padding: 2px 8px;
+  position: relative;
+  left: -4px;
+  top: -12px;
+  /* opacity: 0.9; */
+  COLOR: WHITE;
+}
+

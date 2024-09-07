@@ -63,44 +63,7 @@
 </section>
 <!-- intro -->
 
-<!-- Products -->
-<section>
-  <div class="container my-2">
-    <div class="row">
-      <% @products.each do |product| %>
-        <div class="col-lg-3 col-md-6 col-sm-6">
-          <div class="card my-2 shadow-0">
-
-            <i class="fas fa-heart fa-lg heart" align="right"></i>
-  <!--          <i class="fas fa-heart heart"></i>-->
-
-            <a href="<%= pages_product_path(id: product.id) %>" class="img-wrap">
-              <%= image_tag(primary_image_url(product), class: "card-img-top", style: "aspect-ratio: 1 / 1") %>
-            </a>
-  <!--          <div class="ratings">-->
-  <!--            <i class="fa fa-star rating-color"></i>-->
-  <!--            <i class="fa fa-star rating-color"></i>-->
-  <!--            <i class="fa fa-star rating-color"></i>-->
-  <!--            <i class="fa fa-star rating-color"></i>-->
-  <!--            <i class="fa fa-star"></i>-->
-  <!--          </div>-->
-            <div class="card-body p-0 pt-2 mx-5 my-3">
-              <h5 align="center" class="card-title">$ <%= product.price %></h5>
-              <a href="<%= pages_product_path(id: product.id) %>"><p class="card-text mb-0" align="center" title="<%= product.name %>"><%= truncate(product.name, length: 24, omission: '...') %></p></a>
-            </div>
-            <!-- Button to add the product to the cart -->
-            <button class="btn btn-primary add-to-cart ms-6 mb-4">
-              <i class="fa fa-shopping-cart"></i> Add to cart
-            </button>
-            <button type="button" class="btn add-to-cart btn-outline-primary ms-6 mb-4">
-              <i class="fas fa-plus"></i> Add to wishlist</button>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</section>
-<!-- Products -->
+<%= render partial: 'pages/shared/products', locals: { products: @products } %>
 
 <!-- Recently viewed -->
 <section class="mt-5 mb-4">
@@ -112,7 +75,7 @@
     <div class="row gy-3">
       <% @recently_viewd_products.each do  |product| %>
         <div class="col-lg-2 col-md-4 col-4">
-          <a href="<%= pages_product_path(id: product.id) %>" class="img-wrap">
+          <a href="<%= pages_product_detail_path(id: product.id) %>" class="img-wrap">
             <%= image_tag(primary_image_url(product), class: "img-thumbnail recent-products", height: "200", width: "200", title: product.name) %>
           </a>
         </div>

@@ -34,4 +34,9 @@ class Product < ApplicationRecord
   def main_images
     product_images.where.not(image: nil).where(is_primary: false)
   end
+
+  def self.stock_available?(product_id, product_quantity)
+    product = find_by(id: product_id)
+    product.stock_quantity >= product_quantity
+  end
 end
