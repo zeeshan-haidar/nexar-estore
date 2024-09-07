@@ -7,9 +7,7 @@ module PagesHelper
   def total_cart_items
     total_cart_items = 0
     cart_data = cart
-    if cart_data.present?
-      total_cart_items = cart_data.values.sum
-    end
+    total_cart_items = cart_data.values.sum if cart_data.present?
     total_cart_items
   end
 
