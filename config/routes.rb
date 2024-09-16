@@ -35,6 +35,8 @@ Rails.application.routes.draw do
 
   post 'cart/remove_product' => 'cart#remove_product'
 
+  post 'payments/checkout' => 'payments#checkout'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

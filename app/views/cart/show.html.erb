@@ -28,7 +28,87 @@
           </div>
         </div>
       </div>
-      <%= render partial: 'cart_summary', locals: { cart_products: @cart_products, cart_data: @cart_data } %>
+
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-header py-3">
+            <h5 class="mb-0">Summary</h5>
+          </div>
+          <div class="card-body">
+            <%= render partial: 'cart_summary', locals: { cart_products: @cart_products, cart_data: @cart_data } %>
+            <%#= button_to payments_checkout_path, method: :post, form: { id: "checkout-form", data: { turbo: false } },  class: "btn btn-primary btn-lg btn-block" do %>
+<!-- Checkout -->
+            <%# end %>
+
+            <button class="btn btn-primary btn-lg btn-block" id="checkout-form" data-turbo=false type="submit">
+              Checkout
+            </button>
+          </div>
+        </div>
+      </div>
+      <section class=>
+        <div class="container my-5">
+          <!-- Modal -->
+          <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal"
+                          aria-label="Close"></button>
+                </div>
+                <div class="modal-body">...</div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-mdb-ripple-init
+                          data-mdb-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" data-mdb-ripple-init>Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <%= content_for :custom_script_after do %>
+        <script type=text/javascript >
+          // initialize modal
+          var myModal = new mdb.Modal(document.getElementById('paymentModal'));
+
+          const csrfToken = document.querySelector('[name="csrf-token"]').getAttribute('content');
+
+          $(document).ready(function() {
+            $("body").on('click', '#checkout-form', function(event) {
+              event.preventDefault();
+
+              $.ajax({
+                url: "<%= payments_checkout_path %>",
+                type: 'POST',
+                dataType: 'json',
+                headers: {
+                  'X-CSRF-Token': csrfToken
+                },
+                data: {}
+              }).done(function(ret) {
+                 //myModal.show();
+                const message = ret["message"];
+
+                if(message == 'sign_in')
+                {
+                  alert('Please Sign in First !');
+                }else if(message == 'shipping_address')
+                {
+                  alert('Please add shipping address in your profile first !');
+                }
+                else
+                {
+                  myModal.show();
+                }
+                 //console.log('ajax done');
+              });
+            });
+          });
+        </script>
+      <% end %>
     </div>
   </div>
 </section>
