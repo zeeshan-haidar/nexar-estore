@@ -57,6 +57,9 @@ gem 'kaminari', '1.2.2'
 # for file upload
 gem 'carrierwave', '3.0.3'
 
+#for stripe payment gateway integration
+gem 'stripe', '10.7'
+
 # for aws s3 support
 gem 'fog-aws', '3.21.0'
 
