@@ -59,6 +59,8 @@ class User < ApplicationRecord
   validates :city, presence: true
   validates :country, presence: true
 
+  has_many :payments
+
   def full_name
     name || "#{first_name} #{last_name}"
   end

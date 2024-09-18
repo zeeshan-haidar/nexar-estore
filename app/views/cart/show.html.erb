@@ -53,16 +53,27 @@
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Payment</h5>
                   <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal"
                           aria-label="Close"></button>
                 </div>
-                <div class="modal-body">...</div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-mdb-ripple-init
-                          data-mdb-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" data-mdb-ripple-init>Save changes</button>
-                </div>
+                <form action="/payments" method="post" id="new_payment">
+                  <div class="modal-body">
+                      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                      <input type="hidden" name="payments[stripe_payment_id]" id="payment_id">
+                      <input type="hidden" name="payments[price]" id="price">
+
+                      <div class="field">
+                        <div id="card"></div>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-ripple-init
+                            data-mdb-dismiss="modal">Close</button>
+  <!--                  <button type="button" class="btn btn-primary" data-mdb-ripple-init>Save changes</button>-->
+                    <input type="submit" id="pay_btn" class="btn btn-primary" data-mdb-ripple-init value="">
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -81,7 +92,7 @@
               event.preventDefault();
 
               $.ajax({
-                url: "<%= payments_checkout_path %>",
+                url: "<%= checkouts_check_path %>",
                 type: 'POST',
                 dataType: 'json',
                 headers: {
@@ -106,6 +117,84 @@
                  //console.log('ajax done');
               });
             });
+          });
+        </script>
+
+        <script charset="utf-8">
+
+          const amount = document.querySelector('#amount').innerText.substring(1);
+          const total_amount = document.querySelector('#price');
+          const payment_btn = document.querySelector('#pay_btn');
+          total_amount.value = amount;
+          payment_btn.value='Pay $'+amount;
+
+          var stripe = Stripe('<%= Rails.configuration.stripe[:publishable_key] %>');
+          // load the fonts in
+          var fonts = [{
+            cssSrc: "https://fonts.googleapis.com/css?family=Karla",
+          }];
+          // styles for the stripe inputs
+          var styles = {
+            base: {
+              iconColor: "#cccccc",
+              color: "#000000",
+              fontFamily: "MonumentGroteskTrial-Regular",
+              fontSize: "16px",
+
+              "::placeholder": {
+                color: "#ccc"
+              },
+              ":-webkit-autofill": {
+                color: "#ccc"
+              }
+            },
+            invalid: {
+              iconColor: "#FFC7EE",
+              color: "#A31621"
+            }
+          }
+
+          var elements = stripe.elements();
+          var cardElement = elements.create('card', {style: styles});
+          cardElement.mount('#card');
+
+          const form = document.querySelector('#new_payment');
+          form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Step 1: POST request to create payment intent
+            fetch('/payment_intents', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                authenticity_token: '<%= form_authenticity_token %>',
+                amount: amount
+              }),
+            })
+              .then((response) => response.json())
+              .then((paymentIntent) => {
+                // Step 2: Create payment method and confirm payment intent.
+                stripe.confirmCardPayment(
+                  paymentIntent.client_secret, {
+                    payment_method: {
+                      card: cardElement
+                    }
+                  }
+                ).then((resp) => {
+                  if(resp.error) {
+                    alert(resp.error.message);
+                  } else {
+                    // Step 3: Embed payment ID in form
+                    const paymentIdInput = document.querySelector('#payment_id');
+                    paymentIdInput.value = paymentIntent.id;
+                    form.submit();
+                  }
+                })
+              })
+              .catch((error) => {
+                console.error('Error:', error);
+              });
           });
         </script>
       <% end %>

@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     resources :products, except: [:show]
   end
 
+  resources :payment_intents, only: [:create]
+  resources :webhooks, only: [:create]
+
   root 'pages#home'
 
   get 'pages/product_detail' => 'pages#product_detail'
@@ -35,7 +38,9 @@ Rails.application.routes.draw do
 
   post 'cart/remove_product' => 'cart#remove_product'
 
-  post 'payments/checkout' => 'payments#checkout'
+  post 'checkouts/check' => 'checkouts#check'
+
+  post 'payments' => 'payments#create'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

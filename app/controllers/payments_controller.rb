@@ -1,12 +1,18 @@
 class PaymentsController < ApplicationController
-
-  def checkout
-    if !user_signed_in?
-      render json: { message: "sign_in" }, status: 200
-    elsif !current_user.shipping_address?
-      render json: { message: "shipping_address" }, status: 200
+  def create
+    @payment = Payment.new(form_params.merge({user_id: current_user.id}))
+    if @payment.save
+      redirect_to cart_show_url
     else
-      render json: { message: "ok" }, status: 200
+      flash.now[:error] = "Oops, something went wrong with your submission. Please try again!"
+      render :new
     end
+  end
+
+  def form_params
+    params.require(:payments).permit(
+      :stripe_payment_id,
+      :price
+    )
   end
 end

@@ -17,7 +17,7 @@
           <p class="mb-0">(including VAT)</p>
         </strong>
       </div>
-      <span><strong><%= "$#{total_cart_amount(cart_data, cart_products)}" %></strong></span>
+      <strong><span id="amount"><%= "$#{total_cart_amount(cart_data, cart_products)}" %><span></strong>
     </li>
   </ul>
 <% end %>
