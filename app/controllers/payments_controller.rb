@@ -1,6 +1,6 @@
 class PaymentsController < ApplicationController
   def create
-    @payment = Payment.new(form_params.merge({user_id: current_user.id}))
+    @payment = Payment.new(form_params.merge({ user_id: current_user.id }))
     if @payment.save
       redirect_to cart_show_url
     else

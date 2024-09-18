@@ -1,23 +1,24 @@
 class WebhooksController < ApplicationController
   skip_before_action :verify_authenticity_token
 
+  # rubocop:disable Metrics/MethodLength
   def create
     payload = request.body.read
     sig_header = request.env['HTTP_STRIPE_SIGNATURE']
     event = nil
-    endpoint_secret =  Rails.configuration.stripe[:webhook_secret]
+    endpoint_secret = Rails.configuration.stripe[:webhook_secret]
 
     begin
       event = Stripe::Webhook.construct_event(
         payload, sig_header, endpoint_secret
       )
-    rescue JSON::ParserError => e
+    rescue JSON::ParserError
       # Invalid payload
-      render json: { message: 'invalid json' }, status: 400
+      render json: { message: 'invalid json' }, status: :bad_request
       return
-    rescue Stripe::SignatureVerificationError => e
+    rescue Stripe::SignatureVerificationError
       # Invalid signature
-      render json: { message: 'signature verification failed' }, status: 400
+      render json: { message: 'signature verification failed' }, status: :bad_request
       return
     end
 
@@ -39,4 +40,5 @@ class WebhooksController < ApplicationController
 
     render json: { message: 'success' }
   end
+  # rubocop:enable Metrics/MethodLength
 end
