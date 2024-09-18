@@ -380,6 +380,7 @@ GEM
     stimulus-rails (1.2.2)
       railties (>= 6.0.0)
     stringio (3.0.8)
+    stripe (10.7.0)
     tailwindcss-rails (2.0.30-x86_64-linux)
       railties (>= 6.0.0)
     thor (1.2.2)
@@ -449,6 +450,7 @@ DEPENDENCIES
   sidekiq (~> 7.0, >= 7.0.2)
   sprockets-rails
   stimulus-rails
+  stripe (= 10.7)
   tailwindcss-rails
   turbo-rails
   tzinfo-data

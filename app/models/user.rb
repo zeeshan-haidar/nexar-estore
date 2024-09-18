@@ -59,12 +59,18 @@ class User < ApplicationRecord
   validates :city, presence: true
   validates :country, presence: true
 
+  has_many :payments, dependent: :destroy
+
   def full_name
     name || "#{first_name} #{last_name}"
   end
 
   def full_address
     "#{street}, #{city}, #{country}"
+  end
+
+  def shipping_address?
+    street.present? && city.present? && country.present?
   end
 
   # def self.new_with_session(params, session)
