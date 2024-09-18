@@ -82,6 +82,9 @@
 
       <%= content_for :custom_script_after do %>
         <script type=text/javascript >
+
+          var amount = 0;
+
           // initialize modal
           var myModal = new mdb.Modal(document.getElementById('paymentModal'));
 
@@ -112,6 +115,9 @@
                 }
                 else
                 {
+                  amount = document.querySelector('#amount').innerText.substring(1);
+                  document.querySelector('#price').value = amount;
+                  document.querySelector('#pay_btn').value = 'Pay $'+amount;
                   myModal.show();
                 }
                  //console.log('ajax done');
@@ -121,13 +127,6 @@
         </script>
 
         <script charset="utf-8">
-
-          const amount = document.querySelector('#amount').innerText.substring(1);
-          const total_amount = document.querySelector('#price');
-          const payment_btn = document.querySelector('#pay_btn');
-          total_amount.value = amount;
-          payment_btn.value='Pay $'+amount;
-
           var stripe = Stripe('<%= Rails.configuration.stripe[:publishable_key] %>');
           // load the fonts in
           var fonts = [{
