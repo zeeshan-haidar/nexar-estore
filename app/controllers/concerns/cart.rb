@@ -16,4 +16,8 @@ module Cart
   def delete_cart
     cookies[:nexar_cart] = nil
   end
+
+  def cart_products(cart_data)
+    Product.where(id: cart_data.keys).order(id: :asc)
+  end
 end

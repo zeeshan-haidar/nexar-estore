@@ -107,8 +107,4 @@ class CartController < ApplicationController
   def product_available?(product_id, quantity)
     Product.stock_available?(product_id, quantity)
   end
-
-  def cart_products(cart_data)
-    Product.where(id: cart_data.keys).order(id: :asc)
-  end
 end
