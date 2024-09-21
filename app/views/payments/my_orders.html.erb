@@ -1,0 +1,33 @@
+<div class="container w-50 p-4 my-5">
+  <div class="card mb-3 p-lg-5">
+    <h2>My Orders</h2>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Invoice ID</th>
+        <th>Date</th>
+        <th>Amount</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @my_orders.each do |order| %>
+        <tr>
+          <td><%= order.id %></td>
+          <td><%= order.created_at.strftime("%B %d, %Y") %></td>
+          <td><%= "$#{order.price}" %></td>
+          <td>
+            <%= link_to 'View Details', payment_order_details_path(payment_id: order.id), class: 'btn btn-warning btn-sm' %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="clearfix">
+      <div class="pull-left">
+        <%= paginate @my_orders %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+

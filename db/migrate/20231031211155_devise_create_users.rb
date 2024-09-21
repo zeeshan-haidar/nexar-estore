@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class DeviseCreateUsers < ActiveRecord::Migration[7.0]
-  # rubocop:disable Metrics/MethodLength
   def change
     create_enum :user_gender, %w[male female]
 
@@ -51,5 +50,4 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
     add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
   end
-  # rubocop:enable Metrics/MethodLength
 end

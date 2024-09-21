@@ -38,9 +38,15 @@ Rails.application.routes.draw do
 
   post 'cart/remove_product' => 'cart#remove_product'
 
+  post 'cart/delete_product' => 'cart#delete_product'
+
   post 'checkouts/check' => 'checkouts#check'
 
   post 'payments' => 'payments#create'
+
+  get 'payments/:payment_id/order_details' => 'payments#order_details', as: :payment_order_details
+
+  get 'payments/my_orders' => 'payments#my_orders', as: :my_orders
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

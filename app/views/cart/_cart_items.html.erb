@@ -1,7 +1,7 @@
 <%= turbo_frame_tag "cart_items" do %>
   <div class="card mb-4">
     <div class="card-header py-3">
-      <h5 class="mb-0">Cart - <%= total_items(cart_data) %> items</h5>
+      <h5 class="mb-0">My Cart</h5>
     </div>
     <div class="card-body">
       <!-- Single item -->
@@ -24,10 +24,9 @@
             <p><strong><%= product.name %></strong></p>
                               <p>Category: <%= product.category.name %></p>
             <!--                  <p>Size: M</p>-->
-<!--            <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-sm me-1 mb-2" data-mdb-tooltip-init-->
-<!--                     title="Remove item">-->
-<!--              <i class="fas fa-trash"></i>-->
-<!--            </button>-->
+            <%= button_to cart_delete_product_path(product_id: product.id), method: :post, class: 'btn btn-danger btn-sm me-1 mb-2', data: { mdb_button_init: true, mdb_ripple_init: true, mdb_tooltip_init: true, toggle: 'tooltip' }, title: 'Remove item' do %>
+              <i class="fas fa-trash"></i>
+            <% end %>
 <!--            <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-danger btn-sm mb-2" data-mdb-tooltip-init-->
 <!--                     title="Move to the wish list">-->
 <!--              <i class="fas fa-heart"></i>-->

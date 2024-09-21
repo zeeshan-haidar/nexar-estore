@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ClassLength
 class CartController < ApplicationController
   include Cart
 
@@ -11,7 +12,6 @@ class CartController < ApplicationController
     end
   end
 
-  # rubocop:disable Metrics/MethodLength
   # rubocop:disable Metrics/PerceivedComplexity
   def add_product
     out_of_stock = false
@@ -80,7 +80,7 @@ class CartController < ApplicationController
         cart_data.delete(product_id)
       end
     end
-
+    @total_cart_items = cart_data.values.sum
     update_cart(cart_data)
 
     turbo_streams = [
@@ -101,14 +101,28 @@ class CartController < ApplicationController
     end
   end
 
-  # rubocop:enable Metrics/MethodLength
+  def delete_product
+    product_id = params[:product_id].to_s
+    cart_data = cart
+    cart_data.delete(product_id)
+    update_cart(cart_data)
+    @total_cart_items = cart_data.values.sum
+    turbo_streams = [
+      turbo_stream.replace("my_cart", partial: "cart/cart_btn", locals: { pages: @total_cart_items }),
+      turbo_stream.replace("cart_summary", partial: "cart/cart_summary", locals: { cart_products: cart_products(cart_data), cart_data: })
+    ]
+    turbo_streams << turbo_stream.replace("cart_items", partial: "cart/cart_items", locals: { cart_products: cart_products(cart_data), cart_data: })
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_streams
+      end
+    end
+  end
+
   private
 
   def product_available?(product_id, quantity)
     Product.stock_available?(product_id, quantity)
   end
-
-  def cart_products(cart_data)
-    Product.where(id: cart_data.keys).order(id: :asc)
-  end
 end
+# rubocop:enable Metrics/ClassLength

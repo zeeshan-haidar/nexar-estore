@@ -19,3 +19,5 @@ Metrics/AbcSize:
     Enabled: false
 Rails/Output:
   Enabled: false
+Metrics/MethodLength:
+  Enabled: false
