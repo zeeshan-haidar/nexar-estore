@@ -1,7 +1,6 @@
 class WebhooksController < ApplicationController
   skip_before_action :verify_authenticity_token
 
-  # rubocop:disable Metrics/MethodLength
   def create
     payload = request.body.read
     sig_header = request.env['HTTP_STRIPE_SIGNATURE']
@@ -40,5 +39,4 @@ class WebhooksController < ApplicationController
 
     render json: { message: 'success' }
   end
-  # rubocop:enable Metrics/MethodLength
 end

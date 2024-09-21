@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ClassLength
 class CartController < ApplicationController
   include Cart
 
@@ -11,7 +12,6 @@ class CartController < ApplicationController
     end
   end
 
-  # rubocop:disable Metrics/MethodLength
   # rubocop:disable Metrics/PerceivedComplexity
   def add_product
     out_of_stock = false
@@ -119,10 +119,10 @@ class CartController < ApplicationController
     end
   end
 
-  # rubocop:enable Metrics/MethodLength
   private
 
   def product_available?(product_id, quantity)
     Product.stock_available?(product_id, quantity)
   end
 end
+# rubocop:enable Metrics/ClassLength

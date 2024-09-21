@@ -16,14 +16,12 @@ class PaymentsController < ApplicationController
   def order_details
     payment = Payment.find(params[:payment_id])
     cart_data = payment.order_details
-    if current_user.id != payment.user_id
-     redirect_to root_path , alert: 'You are not authorized to view this order'
-    end
+    redirect_to root_path, alert: 'You are not authorized to view this order' if current_user.id != payment.user_id
     products = cart_products(cart_data)
     products_array = []
     products.each do |product|
       products_hash = {
-        product: product,
+        product:,
         quantity: cart_data[product.id.to_s].to_i
       }
       products_array << products_hash
@@ -39,7 +37,7 @@ class PaymentsController < ApplicationController
   end
 
   def my_orders
-    @my_orders =  Payment.where(user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(10) # 10 products per page
+    @my_orders = Payment.where(user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(10) # 10 products per page
   end
 
   def form_params
