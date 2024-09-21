@@ -46,6 +46,8 @@ Rails.application.routes.draw do
 
   get 'payments/:payment_id/order_details' => 'payments#order_details', as: :payment_order_details
 
+  get 'payments/my_orders' => 'payments#my_orders', as: :my_orders
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

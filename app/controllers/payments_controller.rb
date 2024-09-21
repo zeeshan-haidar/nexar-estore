@@ -38,6 +38,10 @@ class PaymentsController < ApplicationController
     }
   end
 
+  def my_orders
+    @my_orders =  Payment.where(user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(10) # 10 products per page
+  end
+
   def form_params
     params.require(:payments).permit(
       :stripe_payment_id,
