@@ -38,6 +38,8 @@ Rails.application.routes.draw do
 
   post 'cart/remove_product' => 'cart#remove_product'
 
+  post 'cart/delete_product' => 'cart#delete_product'
+
   post 'checkouts/check' => 'checkouts#check'
 
   post 'payments' => 'payments#create'
