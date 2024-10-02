@@ -189,12 +189,16 @@ body {
 }
 
 .shop-button {
-    height: 47px
+    height: 47px;
+}
+
+.display_inline {
+    display: inline !important;
 }
 
 .product_fav i {
     line-height: 44px;
-    color: #cccccc
+    color: #cccccc;
 }
 
 .product_fav {
