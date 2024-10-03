@@ -140,12 +140,10 @@
               </ul>
             </li>
 
-            <% if user_signed_in? %>
+            <% if user_signed_in? && current_user.user_role? %>
               <li class="nav-item">
                 <a class="nav-link" href="<%= my_orders_path %>">My Orders</a>
               </li>
-            <% end %>
-            <% if user_signed_in? %>
               <li class="nav-item">
                 <a class="nav-link" href="<%= wished_products_path %>">My Wishlist</a>
               </li>
@@ -175,11 +173,11 @@
           <!-- Grid column -->
           <div class="col-12 col-lg-3 col-sm-12 mb-2">
             <!-- Content -->
-            <a href="https://mdbootstrap.com/" target="_blank" class="text-white h2">
-              MDB
+            <a href="#" target="_blank" class="text-white h2">
+              SNE INTERACTIVE
             </a>
             <p class="mt-1 text-white">
-              © 2023 Copyright: MDBootstrap.com
+              © 2024 Copyright: zeshan.webdeveloper@gmail.com
             </p>
           </div>
           <!-- Grid column -->
