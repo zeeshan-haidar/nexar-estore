@@ -2,7 +2,7 @@ class WishedProductsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @wished_products =  Product.joins(:wished_products).where(wished_products: {user_id: current_user.id}).distinct.order(id: :asc).page(params[:page]).per(8)
+    @wished_products = Product.joins(:wished_products).where(wished_products: { user_id: current_user.id }).distinct.order(id: :asc).page(params[:page]).per(8)
   end
 
   def create
