@@ -1,0 +1,17 @@
+<div class="container bg-white">
+  <nav class="p-1">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="<%= root_path %>" target="_self">Home</a></li>
+      <li class="breadcrumb-item"><a href="#">Wishlist</a></li>
+    </ol>
+  </nav>
+</div>
+<%= render partial: 'pages/shared/products', locals: { products: @wished_products } %>
+
+<div class="container bg-white p-2">
+  <div class="clearfix">
+    <div class="pull-left">
+      <%= paginate @wished_products %>
+    </div>
+  </div>
+</div>

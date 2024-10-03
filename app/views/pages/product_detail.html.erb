@@ -53,7 +53,11 @@
                         <i class="fa fa-shopping-cart"></i> Add to cart
                       <% end %>
                     <% end %>
-                    &nbsp;<button type="button" class="btn shop-button btn-outline-primary"><i class="fas fa-plus"></i> Add to wishlist</button>&nbsp;&nbsp;<div class="product_fav"><i class="fas fa-heart"></i></div>
+                    <% if user_signed_in? %>
+                      <%= button_to wished_products_path(product_id: @product.id), method: :post, class: "btn shop-button btn-outline-primary", form_class: "display_inline", data: { turbo: false } do %>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-plus"></i> Add to wishlist
+                      <% end %>
+                    <% end %>
                   </div>
                 </div>
               </div>

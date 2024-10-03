@@ -145,18 +145,11 @@
                 <a class="nav-link" href="<%= my_orders_path %>">My Orders</a>
               </li>
             <% end %>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Gift boxes</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Projects</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Menu item</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Menu name</a>
-            </li>
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <a class="nav-link" href="<%= wished_products_path %>">My Wishlist</a>
+              </li>
+            <% end %>
           </ul>
           <!-- Left links -->
         </div>

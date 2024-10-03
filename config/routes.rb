@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :payment_intents, only: [:create]
+  resources :wished_products, only: [:create, :destroy, :index]
   resources :webhooks, only: [:create]
 
   root 'pages#home'

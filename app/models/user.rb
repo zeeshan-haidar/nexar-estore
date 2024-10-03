@@ -60,6 +60,7 @@ class User < ApplicationRecord
   validates :country, presence: true
 
   has_many :payments, dependent: :destroy
+  has_many :wished_products, dependent: :destroy
 
   def full_name
     name || "#{first_name} #{last_name}"
