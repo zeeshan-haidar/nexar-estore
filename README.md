@@ -1,9 +1,8 @@
 # README
 
-# E-commerce Website README
+# NEXAR ESTORE
 
-This is the README file for an E-commerce website. This document provides an overview of the functional requirements of this app.
-
+NEXAR ESTORE is an eCommerce solution which is designed to provide a seamless and user-friendly shopping experience, offering robust features to enhance both customer and admin interactions. Users can easily register, manage their accounts, and browse through a comprehensive product catalog organized by categories. Each product has a detailed page with multiple images, and related product recommendations. The shopping cart allows users to add, update, and remove items, while the secure checkout process supports various payment options, integrated via Stripe for safe transactions. Admins can manage products and categories through a dedicated dashboard, and users can log in via social media, maintain a wishlist, and review their order history. This solution combines convenience, security, and flexibility to meet the needs of modern online shopping.
 ## Functional Requirements
 
 1. User Registration and Account Management:
@@ -16,7 +15,7 @@ This is the README file for an E-commerce website. This document provides an ove
 
 3. Product Details:
      * Detailed product pages with product specifications and related products.
-     * Multiple images and product zooming.
+     * Multiple images.
 
 4. Shopping Cart:
      * Add, update, and remove items from the shopping cart.
