@@ -3,6 +3,8 @@
 # NEXAR ESTORE
 
 NEXAR ESTORE is an eCommerce solution which is designed to provide a seamless and user-friendly shopping experience, offering robust features to enhance both customer and admin interactions. Users can easily register, manage their accounts, and browse through a comprehensive product catalog organized by categories. Each product has a detailed page with multiple images, and related product recommendations. The shopping cart allows users to add, update, and remove items, while the secure checkout process supports various payment options, integrated via Stripe for safe transactions. Admins can manage products and categories through a dedicated dashboard, and users can log in via social media, maintain a wishlist, and review their order history. This solution combines convenience, security, and flexibility to meet the needs of modern online shopping.
+
+The technologies and frameworks used in this project include Ruby on Rails 7, along with Stimulus and Hotwire Turbo for enhanced frontend interactivity. Stripe is integrated as the payment gateway for secure transactions. AWS S3 is used for product image storage and uploading. Social media login functionality is implemented using Omniauth with Facebook and Google OAuth2. For authentication and authorization, Devise and CanCanCan are utilized to ensure secure and role-based access control.
 ## Functional Requirements
 
 1. User Registration and Account Management:
