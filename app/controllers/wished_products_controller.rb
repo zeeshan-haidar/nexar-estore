@@ -18,6 +18,6 @@ class WishedProductsController < ApplicationController
   def destroy
     wished_product = current_user.wished_products.find_by(product_id: params[:id])
     wished_product.destroy
-    redirect_to wished_products_path, notice: "Removed from your favourites."
+    redirect_to wished_products_path, notice: "Removed from your wishlist."
   end
 end
