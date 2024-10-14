@@ -87,8 +87,6 @@ gem "bootsnap", require: false
 gem 'letter_opener_web', '~> 2.0'
 
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'pry', '~> 0.14.2'
   gem 'byebug', '~> 11.1', '>= 11.1.3'
   # Great Ruby debugging companion: pretty print Ruby objects to visualize their structure. Supports custom object formatting via plugins

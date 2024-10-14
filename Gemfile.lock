@@ -102,9 +102,6 @@ GEM
     connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.3)
-    debug (1.8.0)
-      irb (>= 1.5.0)
-      reline (>= 0.3.1)
     devise (4.9.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -158,10 +155,6 @@ GEM
     importmap-rails (1.2.1)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
-    io-console (0.6.0)
-    irb (1.8.0)
-      rdoc (~> 6.5)
-      reline (>= 0.3.6)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -254,8 +247,6 @@ GEM
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    psych (5.1.0)
-      stringio
     public_suffix (5.0.3)
     puma (5.6.7)
       nio4r (~> 2.0)
@@ -296,13 +287,9 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
-    rdoc (6.5.0)
-      psych (>= 4.0.0)
     redis-client (0.18.0)
       connection_pool
     regexp_parser (2.8.1)
-    reline (0.3.8)
-      io-console (~> 0.5)
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
@@ -379,7 +366,6 @@ GEM
     ssrf_filter (1.1.2)
     stimulus-rails (1.2.2)
       railties (>= 6.0.0)
-    stringio (3.0.8)
     stripe (10.7.0)
     tailwindcss-rails (2.0.30-x86_64-linux)
       railties (>= 6.0.0)
@@ -423,7 +409,6 @@ DEPENDENCIES
   cancancan (~> 3.5)
   capybara
   carrierwave (= 3.0.3)
-  debug
   devise (= 4.9.3)
   dotenv-rails
   factory_bot_rails
