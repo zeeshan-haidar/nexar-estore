@@ -35,5 +35,3 @@
 /.idea/*
 
 #.env files
-.env.development
-.env.production
