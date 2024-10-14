@@ -93,8 +93,10 @@ group :development, :test do
   gem 'awesome_print', '~> 1.9', '>= 1.9.2'
 
   #to save environment variables
-  gem 'dotenv-rails'
+
 end
+
+gem 'dotenv-rails', groups: [:development, :test, :production]
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
