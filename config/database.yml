@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: nexar_estore_production
-  username: nexar_estore
-  password: <%= ENV["NEXAR_ESTORE_DATABASE_PASSWORD"] %>
+  username: ubuntu
+  password: root
