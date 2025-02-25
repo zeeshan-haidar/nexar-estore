@@ -58,7 +58,7 @@ module Admin
 
     def demo
       respond_to do |format|
-        format.html { redirect_to admin_categories_path, notice: "Update disabled on demo app" }
+        format.html { redirect_to admin_categories_path, notice: "Modification disabled on demo application" }
       end
     end
 
