@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Receipt</title>
+  <style>
+      body {
+          font-family: Arial, sans-serif;
+          background: linear-gradient(to right, #f8f9fa, #e9ecef);
+          margin: 0;
+          padding: 0;
+      }
+      .container {
+          width: 80%;
+          margin: 20px auto;
+          max-width: 800px;
+      }
+      .card {
+          background: white;
+          border-radius: 10px;
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+          padding: 20px;
+          margin-bottom: 20px;
+      }
+      .card-header {
+          background: #3b71ca;
+          color: white;
+          padding: 15px;
+          font-size: 18px;
+          border-radius: 10px 10px 0 0;
+      }
+      .card-body {
+          padding: 20px;
+      }
+      .order-item {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border-bottom: 1px solid #ddd;
+          padding: 10px 0;
+      }
+      .order-item img {
+          width: 60px;
+          height: auto;
+          border-radius: 5px;
+      }
+      .order-details {
+          flex-grow: 1;
+          text-align: center;
+      }
+      .order-summary, .order-info {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 10px;
+          font-weight: bold;
+      }
+      .footer {
+          background: #3b71ca;
+          color: white;
+          padding: 15px;
+          text-align: right;
+          border-radius: 0 0 10px 10px;
+      }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="card">
+    <div class="card-header">Thanks for your Order, <span><%= @order_details[:user_first_name] %></span>!</div>
+    <div class="card-body">
+      <% @order_details[:products_data].each do |product_data| %>
+        <div class="order-item">
+          <img src="<%= primary_image_url(product_data[:product]) %>" alt="Product Image">
+          <div class="order-details">
+            <p><%= product_data[:product].name %></p>
+            <p>Qty: <%= product_data[:quantity] %></p>
+            <p>$<%= product_data[:product].price.to_f %> x <%= product_data[:quantity] %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="order-info">
+      <p>Invoice Number:</p>
+      <p><%= @order_details[:invoice_id] %></p>
+    </div>
+    <div class="order-info">
+      <p>Invoice Date:</p>
+      <p><%= @order_details[:invoice_date].strftime("%B %d, %Y") %></p>
+    </div>
+    <div class="order-summary">
+      <p>Total:</p>
+      <p>$<%= @order_details[:amount] - 5 %></p>
+    </div>
+    <div class="order-info">
+      <p>Shipping Address:</p>
+      <p><%= @order_details[:shipping_address] %></p>
+    </div>
+    <div class="order-info">
+      <p>Delivery Charges:</p>
+      <p>$5</p>
+    </div>
+    <div class="order-info">
+      <p>Discount:</p>
+      <p>$00.00</p>
+    </div>
+    <div class="order-info">
+      <p>GST 18%:</p>
+      <p>0</p>
+    </div>
+  </div>
+  <div class="footer">
+    <h5>Total Paid: $<%= @order_details[:amount] %></h5>
+  </div>
+</div>
+</body>
+</html>

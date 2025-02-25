@@ -15,25 +15,11 @@ class PaymentsController < ApplicationController
 
   def order_details
     payment = Payment.find(params[:payment_id])
-    cart_data = payment.order_details
     redirect_to root_path, alert: 'You are not authorized to view this order' if current_user.id != payment.user_id
-    products = cart_products(cart_data)
-    products_array = []
-    products.each do |product|
-      products_hash = {
-        product:,
-        quantity: cart_data[product.id.to_s].to_i
-      }
-      products_array << products_hash
-    end
-    @order_details = {
-      invoice_date: payment.created_at.to_date,
-      amount: payment.price.to_f,
-      products_data: products_array,
-      invoice_id: payment.id,
-      user_first_name: payment.user.first_name,
-      shipping_address: payment.shipping_address
-    }
+
+    OrderConfirmationWorker.perform(current_user.id, payment.id)
+
+    @order_details = order_detail(payment)
   end
 
   def my_orders
