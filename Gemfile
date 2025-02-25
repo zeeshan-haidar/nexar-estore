@@ -93,7 +93,6 @@ group :development, :test do
   gem 'awesome_print', '~> 1.9', '>= 1.9.2'
 
   #to save environment variables
-
 end
 
 gem 'dotenv-rails', groups: [:development, :test, :production]
