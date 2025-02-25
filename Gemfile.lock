@@ -367,8 +367,6 @@ GEM
     stimulus-rails (1.2.2)
       railties (>= 6.0.0)
     stripe (10.7.0)
-    tailwindcss-rails (2.0.30-x86_64-linux)
-      railties (>= 6.0.0)
     thor (1.2.2)
     timeout (0.4.0)
     turbo-rails (1.4.0)
@@ -436,7 +434,6 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   stripe (= 10.7)
-  tailwindcss-rails
   turbo-rails
   tzinfo-data
   web-console
