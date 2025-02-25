@@ -18,6 +18,8 @@ module Admin
     end
 
     def create
+      demo
+      return
       @product = Product.new(product_params)
       if @product.save
         redirect_to admin_products_path, notice: 'Product was successfully created.'
@@ -27,6 +29,8 @@ module Admin
     end
 
     def update
+      demo
+      return
       if @product.update(product_params)
         redirect_to admin_products_path, notice: 'Product was successfully updated.'
       else
@@ -35,8 +39,16 @@ module Admin
     end
 
     def destroy
+      demo
+      return
       @product.destroy
       redirect_to admin_products_path, notice: 'Product was successfully deleted.'
+    end
+
+    def demo
+      respond_to do |format|
+        format.html { redirect_to admin_products_path, notice: 'Update disabled on demo application.' }
+      end
     end
 
     private

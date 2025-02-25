@@ -19,6 +19,8 @@ module Admin
 
     # POST /admin/categories or /admin/categories.json
     def create
+      demo
+      return
       @category = Category.new(category_params)
 
       respond_to do |format|
@@ -32,6 +34,8 @@ module Admin
 
     # PATCH/PUT /admin/categories/1 or /admin/categories/1.json
     def update
+      demo
+      return
       respond_to do |format|
         if @category.update(category_params)
           format.html { redirect_to admin_categories_path, notice: "Category was successfully updated." }
@@ -43,10 +47,18 @@ module Admin
 
     # DELETE /admin/categories/1 or /admin/categories/1.json
     def destroy
+      demo
+      return
       @category.destroy
 
       respond_to do |format|
         format.html { redirect_to admin_categories_url, notice: "Category was successfully destroyed." }
+      end
+    end
+
+    def demo
+      respond_to do |format|
+        format.html { redirect_to admin_categories_path, notice: "Update disabled on demo app" }
       end
     end
 
