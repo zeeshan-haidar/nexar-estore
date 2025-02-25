@@ -33,7 +33,7 @@ module Cart
       products_array << products_hash
     end
 
-    order_detail = {
+    {
       invoice_date: payment.created_at.to_date,
       amount: payment.price.to_f,
       products_data: products_array,
