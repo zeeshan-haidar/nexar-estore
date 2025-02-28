@@ -1,7 +1,9 @@
 module PagesHelper
   include Cart
   def primary_image_url(product)
-    product.product_images.where(is_primary: true).first&.image&.url
+    image = product.product_images.where(is_primary: true).first&.image&.url
+    image = "products/default_product.jpg" unless image.present?
+    image
   end
 
   def total_cart_items
